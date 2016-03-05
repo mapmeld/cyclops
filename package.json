@@ -1,0 +1,25 @@
+{
+  "name": "emulang",
+  "version": "0.1.1",
+  "description": "Toy programming language written in Linear A",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mapmeld/emulang.git"
+  },
+  "keywords": [
+    "emu",
+    "linear",
+    "a",
+    "conlang"
+  ],
+  "author": "Nick Doiron <ndoiron@mapmeld.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mapmeld/emulang/issues"
+  },
+  "homepage": "https://github.com/mapmeld/emulang#readme"
+}

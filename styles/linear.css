@@ -1,0 +1,16 @@
+@font-face {
+  font-family: 'Aegean33';
+  src: url(Aegean.ttf);
+}
+
+html, body {
+  font-family: sans-serif;
+}
+
+code, .linear {
+  font-family: 'Aegean33', sans-serif;
+}
+
+code.plain {
+  font-family: monospace;
+}

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" type="text/css" href="styles/linear.css"/>
+  </head>
+  <body>
+    <h1>
+      Emu Lang
+      <span class="linear">𐙵</span>
+    </h1>
+    <p>
+      Emu or <span class="linear">'𐙵'</span> is a functional language that runs in JavaScript / NodeJS.
+    </p>
+    <p>
+      Emu is written in <a href="https://en.wikipedia.org/wiki/Linear_A_(script)">Linear A</a>,
+      a forgotten/undeciphered script used 3500-4500 years ago on the Greek island of Minos.
+    </p>
+    <code>
+      𐙵
+      <br/>
+      > Emu𐙵 0.1 emulang.org
+      <br/>
+      𐜝 hello world
+      <br/>
+      > hello world
+      <br/>
+      𐄓𐄊 𐄌
+      <br/>
+      > 𐄔
+      <br/>
+      𐝈𐜮 𐄝
+      <br/>
+      𐜝 𐝈𐜮
+      <br/>
+      > 𐄝
+    </code>
+    <br/>
+    <code class="plain">
+      help();
+      <br/><br/><br/>
+      console.log('hello world');
+      <br/>
+      > 'hello world'
+      <br/>
+      44 + 6
+      <br/>
+      > 50
+      <br/>
+      var x = 50
+      <br/>
+      console.log(x);
+      <br/>
+      > 50
+    </code>
+    <h4>Types</h4>
+    <p>
+      Commands are individual symbols in Linear A. Multiple characters can be a variable name.
+    </p>
+    <p>
+      Numbers are written in <a href="https://en.wikipedia.org/wiki/Aegean_numerals">Aegean numerals</a>,
+      including additional fractions used in Linear A.
+    </p>
+    <p>
+      Any non-Minoan characters are interpreted as strings.
+    </p>
+    <h4>Commands</h4>
+    <ul>
+      <h4>Output</h4>
+      <li><span class="linear">𐙵</span> = help</li>
+      <li><span class="linear">𐜝</span> = print</li>
+
+<!--
+      <h4>Storage</h4>
+      𐚯 local storage (persistent in browser session)
+      𐜮 universal storage (sets or retrieves value on emu-lang universal web db)
+-->
+
+      <h4>Math</h4>
+      <li>addition done by placing numbers on same line (𐄓𐄊 𐄌 returns 𐄔)</li>
+      <li><span class="linear">𐝔</span> = subtract</li>
+      <li><span class="linear">𐝑</span> = divide</li>
+      <li><span class="linear">𐙨</span> = multiply</li>
+      <li><span class="linear">𐙈</span> = compare and return the greater value max()</li>
+
+      <h4>Functions</h4>
+      <p>Write the squaring function <i>f(x) = x^2</i>. Let's name the function <span class="linear">𐝎𐝎</span>.
+        <br/>Inside the function, <span class="linear">𐝈</span> will represent the first parameter passed into the function,
+        followed by <span class="linear">𐝉, 𐝊, 𐝋</span>, and <span class="linear">𐝌</span></p>
+      <code>
+        𐛪 𐝎𐝎
+        <br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;𐝈 𐙨 𐝈
+        <br/>
+        𐛫
+      </code>
+      <p>Now call the function:</p>
+      <code>
+        𐝎𐝎 𐄊
+        <br/>
+        > 𐄐𐄌
+      </code>
+    </ul>
+  </body>
+</html>
