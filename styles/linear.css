@@ -1,6 +1,6 @@
 @font-face {
-  font-family: 'Aegean33';
-  src: url(Aegean.ttf);
+  font-family: 'Aegean35';
+  src: url(Aegean.ttf.gz);
 }
 
 html, body {
@@ -8,7 +8,7 @@ html, body {
 }
 
 code, .linear {
-  font-family: 'Aegean33', sans-serif;
+  font-family: 'Aegean35', sans-serif;
 }
 
 code.plain {
