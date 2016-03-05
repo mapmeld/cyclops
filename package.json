@@ -6,6 +6,9 @@
   "scripts": {
     "test": "mocha"
   },
+  "bin": {
+    "cyclops": "cli.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mapmeld/cyclops.git"
@@ -22,6 +25,7 @@
   },
   "homepage": "https://github.com/mapmeld/cyclops#readme",
   "dependencies": {
-    "aegean-numbers": "^1.0.1"
+    "aegean-numbers": "^1.0.1",
+    "commander": "^2.9.0"
   }
 }

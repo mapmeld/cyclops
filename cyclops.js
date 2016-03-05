@@ -43,6 +43,12 @@ function cyclops(srccode, callback) {
           resultOfLine = 'Cyclops𐙀 CyclopsLang.org';
         }
 
+        // print command
+        if (part === '𐜝') {
+          resultOfLine = line.slice(p + 1, 100)[0];
+          console.log(resultOfLine);
+        }
+
         // subtraction command
         if (part === '𐝔') {
           if (line.length < p) {
@@ -85,12 +91,6 @@ function cyclops(srccode, callback) {
         // entering a conditional
         if (part === '𐘜') {
           evalVal(line.slice(1));
-        }
-
-        // print command
-        if (part === '𐜝') {
-          resultOfLine = line.slice(p + 1, 100)[0];
-          console.log(resultOfLine);
         }
       }
       parsePart(p + 1);
