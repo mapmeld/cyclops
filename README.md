@@ -2,6 +2,8 @@
 
 I thought there ought to be a language called "Emu" and now there is.
 
+Other names: Cyclops?
+
 ## Linear A Font
 
 Uses <a href="http://unicode.org/charts/PDF/U10600.pdf">Unicode</a> support for Linear A

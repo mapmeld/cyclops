@@ -55,7 +55,7 @@
     </code>
     <h4>Types</h4>
     <p>
-      Commands are individual symbols in Linear A. Multiple characters can be a variable name.
+      Commands are individual symbols in Linear A. Multiple characters can be the name of a variable or function.
     </p>
     <p>
       Numbers are written in <a href="https://en.wikipedia.org/wiki/Aegean_numerals">Aegean numerals</a>,
@@ -66,10 +66,14 @@
     </p>
     <h4>Commands</h4>
     <ul>
-      <h4>Output</h4>
+      <h4>I/O</h4>
       <li><span class="linear">𐙵</span> = help</li>
       <li><span class="linear">𐜝</span> = print</li>
-
+      <li><span class="linear">𐝠</span> = receive user input from command line</li>
+      <br/>
+      <h4>NodeJS I/O</h4>
+      <li><span class="linear">𐚮</span> = pipe in
+      <li><span class="linear">𐛄</span> = pipe out result of the line</li>
 <!--
       <h4>Storage</h4>
       𐚯 local storage (persistent in browser session)
@@ -81,7 +85,35 @@
       <li><span class="linear">𐝔</span> = subtract</li>
       <li><span class="linear">𐝑</span> = divide</li>
       <li><span class="linear">𐙨</span> = multiply</li>
-      <li><span class="linear">𐙈</span> = compare and return the greater value max()</li>
+
+      <h4>Conditional</h4>
+      <li><span class="linear">𐘜</span> = conditional switch</li>
+      <li><span class="linear">𐘩</span> = end conditional</li>
+      <li><span class="linear">𐙈</span> = equality (===)</li>
+      <li><span class="linear">𐚠</span> = greater-than
+      <li><span class="linear">𐚡</span> = less-than
+      <p>Conditionals if value of variable <span class="linear">𐚨𐚨</span> is greater than, less than, or equal to 5</p>
+      <code>
+        𐘜 𐚨𐚨
+        <br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;𐚠 𐄉
+        <br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;𐜝 greater than 3
+        <br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;𐚠 𐄋
+        <br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;𐜝 greater than 5, too
+        <br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;𐚡 𐄋
+        <br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;𐜝 less than 5
+        <br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;𐙈 𐄋
+        <br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;𐜝 equal to 5
+        <br/>
+        𐘩
+      </code>
 
       <h4>Functions</h4>
       <p>Write the squaring function <i>f(x) = x^2</i>. Let's name the function <span class="linear">𐝎𐝎</span>.
@@ -101,5 +133,8 @@
         > 𐄐𐄌
       </code>
     </ul>
+
+    <h3>Guessing Game</h3>
+    <p>A guessing game written in Emu:</p>
   </body>
 </html>
