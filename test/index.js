@@ -15,11 +15,44 @@ describe('print', function() {
   });
 
   it('should return string for 𐜝', function(done) {
-    cyclops('𐜝 banana', function (err, output) {
+    cyclops('𐜝 banana man', function (err, output) {
       if (err) {
         done(err);
       } else {
-        assert.equal(output, 'banana');
+        assert.equal(output, 'banana man');
+        done();
+      }
+    });
+  });
+
+  it('should print completed math', function(done) {
+    cyclops('𐜝 𐄋 𐄋', function (err, output) {
+      if (err) {
+        done(err);
+      } else {
+        assert.equal(output, '𐄐');
+        done();
+      }
+    });
+  });
+
+  it('should print the value of a variable', function(done) {
+    cyclops('𐘾𐘾 𐄋\n𐜝 𐘾𐘾', function (err, output) {
+      if (err) {
+        done(err);
+      } else {
+        assert.equal(output, '𐄋');
+        done();
+      }
+    });
+  });
+
+  it('should modify and print the new value of a variable', function(done) {
+    cyclops('𐘾𐘾 𐄋\n𐘾𐘾 𐄋 𐘾𐘾\n𐜝 𐘾𐘾', function (err, output) {
+      if (err) {
+        done(err);
+      } else {
+        assert.equal(output, '𐄐');
         done();
       }
     });
@@ -77,6 +110,17 @@ describe('numerals', function() {
         done(err);
       } else {
         assert.equal(output, '𐄋');
+        done();
+      }
+    });
+  });
+
+  it('order of operations should return 𐄑 (20) for 3 + 2 * 4', function(done) {
+    cyclops('𐄉 𐄈 𐙨 𐄊', function (err, output) {
+      if (err) {
+        done(err);
+      } else {
+        assert.equal(output, '𐄑');
         done();
       }
     });
