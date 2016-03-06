@@ -2,6 +2,47 @@
 var assert = require('assert');
 var cyclops = require('../cyclops');
 
+describe('function', function() {
+  it('square function', function(done) {
+    cyclops('𐛪 𐝎𐝎\n𐝈 𐙨 𐝈\n𐛫\n𐝎𐝎 𐄊', function (err, output) {
+      if (err) {
+        done(err);
+      } else {
+        assert.equal(output, '𐄐𐄌');
+        done();
+      }
+    });
+  });
+
+  it('multiply function, two params', function(done) {
+    cyclops('𐛪 𐝎𐝎\n𐝈 𐙨 𐝉\n𐛫\n𐝎𐝎 𐄊 𐄌', function (err, output) {
+      if (err) {
+        done(err);
+      } else {
+        assert.equal(output, '𐄑𐄊');
+        done();
+      }
+    });
+  });
+
+/*
+  // chaining isn't working; do this instead
+  // x = multiply(4, 6)
+  // y = multiply(x, 10)
+
+  it('multiply function chaining', function(done) {
+    cyclops('𐛪 𐝎𐝎\n𐝈 𐙨 𐝉\n𐛫\n𐝎𐝎 𐄐 𐝎𐝎 𐄊 𐄌', function (err, output) {
+      if (err) {
+        done(err);
+      } else {
+        assert.equal(output, '𐄚𐄓');
+        done();
+      }
+    });
+  });
+*/
+});
+
 describe('print', function() {
   it('should return helpful output for 𐙀', function(done) {
     cyclops('𐙀', function (err, output) {

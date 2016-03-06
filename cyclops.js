@@ -21,8 +21,11 @@ function cyclops(srccode, callback) {
   var lines = srccode.trim().split(/\r\n|\n/);
 
   var glovars = {};
+  var glofunc = {};
   var loops = [];
   var conditionals = [];
+  var inFunction = false;
+  var params = [];
   var response;
 
   function parseLine(i) {
@@ -33,7 +36,7 @@ function cyclops(srccode, callback) {
     var parser = lines[i];
     // block Arabic numerals
     if (parser.match(/\d/)) {
-      return callback('An error occurred: Arabic numerals not allowed.');
+      throw 'An error occurred: Arabic numerals not allowed.';
     }
     // convert numerals
     parser = (aegean(parser, true) + '');
@@ -73,11 +76,30 @@ function cyclops(srccode, callback) {
         return p;
       }
 
+      if (inFunction) {
+        if (part === '𐛫') {
+          return response;
+        }
+        if (part === '𐝈') {
+          part = params[0];
+        }
+        if (part === '𐝉') {
+          part = params[1];
+        }
+        if (part === '𐝊') {
+          part = params[2];
+        }
+        if (part === '𐝋') {
+          part = params[3];
+        }
+        if (part === '𐝌') {
+          part = params[4];
+        }
+      }
+
       if (!isNaN(part * 1)) {
         // number
-        part = part * 1;
-        var sum = parseCode(initialVal + part, parts.slice(1));
-        return sum;
+        return parseCode(initialVal * 1 + part * 1, parts.slice(1));
       } else if (part.length === 2) {
         // help command
         if (part === '𐙀') {
@@ -118,7 +140,7 @@ function cyclops(srccode, callback) {
         else if (part === '𐝔') {
           var subtractor = parseCode(0, parts.slice(1));
           if (isNaN(subtractor * 1)) {
-            return callback('No number to subtract on line ' + (i + 1));
+            throw 'No number to subtract on line ' + (i + 1);
           }
           return initialVal - subtractor;
         }
@@ -127,7 +149,7 @@ function cyclops(srccode, callback) {
         else if (part === '𐙨') {
           var multiplier = parseCode(0, parts.slice(1));
           if (isNaN(multiplier * 1)) {
-            return callback('No number to multiply on line ' + (i + 1));
+            throw 'No number to multiply on line ' + (i + 1);
           }
           return initialVal * multiplier;
         }
@@ -136,7 +158,7 @@ function cyclops(srccode, callback) {
         else if (part === '𐝑') {
           var divisor = parseCode(0, parts.slice(1));
           if (isNaN(divisor * 1)) {
-            return callback('No number to divide on line ' + (i + 1));
+            throw 'No number to divide on line ' + (i + 1);
           }
           return initialVal / divisor;
         }
@@ -155,7 +177,7 @@ function cyclops(srccode, callback) {
         // end conditional
         else if (part === '𐘩') {
           if (!conditionals.length) {
-            return callback('too many end-if marks');
+            throw 'too many end-if marks';
           }
           conditionals.pop();
         }
@@ -163,7 +185,7 @@ function cyclops(srccode, callback) {
         // greater than, less than, equal to
         else if (['𐚠', '𐚡', '𐙈'].indexOf(part) > -1) {
           if (!conditionals.length) {
-            return callback('comparison without conditional');
+            throw 'comparison without conditional';
           }
           var compareVal = parseCode(0, parts.slice(1));
           var conditionalVal = conditionals[conditionals.length - 1];
@@ -195,7 +217,7 @@ function cyclops(srccode, callback) {
         // break loop flag
         else if (part === '𐝏') {
           if (!loops.length) {
-            return callback('break loop flag without loop');
+            throw 'break loop flag without loop';
           }
           while (i < lines.length && lines[i].indexOf('𐙟') === -1) {
             i++;
@@ -204,24 +226,48 @@ function cyclops(srccode, callback) {
           return 1;
         }
 
+        // start function
+        else if (part === '𐛪') {
+          if (parts.length <= 1 || !isLinearA(parts[1])) {
+            throw 'function did not have valid name';
+          }
+          if (!glofunc[parts[1]]) {
+            // declare function
+            var start = i;
+            while (i < lines.length && lines[i].indexOf('𐛫') === -1) {
+              i++;
+            }
+            glofunc[parts[1]] = [start, i];
+          } else {
+            i = glofunc[parts[1]][1];
+          }
+        }
+
         else {
           // one symbol but not a keyword
           return '';
         }
       } else {
         if (isLinearA(part)) {
-          // setting / retrieving variable
-          if (!glovars[part]) {
-            glovars[part] = '';
-          }
-          var combined = parseCode(initialVal + (firstPart ? '' : glovars[part]), parts.slice(1));
+          // check if it's a function
+          if (glofunc[part]) {
+            response = runFunction(part, parts.slice(1));
+            return response;
+          } else {
+            // setting / retrieving variable
+            if (!glovars[part]) {
+              glovars[part] = '';
+            }
+            var combined = parseCode(initialVal + (firstPart ? '' : glovars[part]), parts.slice(1));
 
-          if (firstPart) {
-            glovars[part] = combined;
+            if (firstPart) {
+              glovars[part] = combined;
+            }
+            return combined;
           }
-          return combined;
+        } else {
+          return parseStringOrVar(part) + parseCode('', parts.slice(1));
         }
-        return parseStringOrVar(part) + parseCode('', parts.slice(1));
       }
     }
 
@@ -230,9 +276,25 @@ function cyclops(srccode, callback) {
       resultOfLine = resultOfLine.substring(1);
     }
     response = aegean(resultOfLine).trim();
+    if (inFunction) {
+      return response;
+    }
     parseLine(i + 1);
   }
-  parseLine(0);
+
+  try {
+    parseLine(0);
+  } catch(e) {
+    callback(e);
+  }
+
+  function runFunction(func, prm) {
+    params = prm;
+    inFunction = true;
+    response = parseLine(glofunc[func][0] + 1);
+    inFunction = false;
+    return response;
+  }
 }
 
 /* polyfills */
