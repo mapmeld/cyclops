@@ -11,6 +11,33 @@ code, .linear {
   font-family: 'Aegean35', sans-serif;
 }
 
+.linear {
+  font-size: 120%;
+}
+
+code {
+  display: block;
+  color: #000;
+  font-size: 16px;
+  background: #eee;
+  padding: 10px;
+}
+
 code.plain {
   font-family: monospace;
+}
+
+code.compare {
+  width: 95%;
+  border: 1px solid #444;
+  float: left;
+}
+
+.clearfix {
+  clear: both;
+}
+
+.centered {
+  text-align: center;
+  margin-top: 10px;
 }

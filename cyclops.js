@@ -97,9 +97,9 @@ function cyclops(srccode, callback) {
         else if (part === '𐝠') {
           var promptStr = parseCode('', parts.slice(1));
           if (typeof module === 'undefined') {
-            return input(promptStr);
+            return aegean(input(promptStr), true);
           } else {
-            return prompt(promptStr);
+            return aegean(prompt(promptStr), true);
           }
         }
 

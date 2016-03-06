@@ -2,163 +2,232 @@
 <html>
   <head>
     <meta charset="utf-8"/>
+    <link rel="stylesheet" type="text/css" href="styles/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="styles/linear.css"/>
   </head>
   <body>
-    <h1>
-      Cyclops Lang
-      <span class="linear">𐙀</span>
-    </h1>
-    <p>
-      Cyclops or <span class="linear">'𐙀'</span> is a functional language that runs in JavaScript / NodeJS.
-    </p>
-    <p>
-      Cyclops is written in <a href="https://en.wikipedia.org/wiki/Linear_A_(script)">Linear A</a>,
-      a forgotten/undeciphered script used 3500-4500 years ago on the Greek island of Minos.
-      <br/>
-      <a href="https://github.com/mapmeld/cyclops">Source Code</a>
-    </p>
-    <code>
-      𐙀
-      <br/>
-      > Cyclops𐙀 CyclopsLang.org
-      <br/>
-      𐜝 hello world
-      <br/>
-      > hello world
-      <br/>
-      𐄓𐄊 𐄌
-      <br/>
-      > 𐄔
-      <br/>
-      𐝈𐜮 𐄝
-      <br/>
-      𐜝 𐝈𐜮
-      <br/>
-      > 𐄝
-    </code>
-    <br/>
-    <code class="plain">
-      help();
-      <br/><br/><br/>
-      console.log('hello world');
-      <br/>
-      > 'hello world'
-      <br/>
-      44 + 6
-      <br/>
-      > 50
-      <br/>
-      var x = 50
-      <br/>
-      console.log(x);
-      <br/>
-      > 50
-    </code>
-    <h4>Types</h4>
-    <p>
-      Commands are individual symbols in Linear A. Multiple characters can be the name of a variable or function.
-    </p>
-    <p>
-      Numbers are written in <a href="https://en.wikipedia.org/wiki/Aegean_numerals">Aegean numerals</a>,
-      including additional fractions used in Linear A.
-    </p>
-    <p>
-      Any non-Minoan characters are interpreted as strings.
-    </p>
-    <h4>Commands</h4>
-    <ul>
-      <h4>Basics</h4>
-      <li><span class="linear">𐙀</span> = help</li>
-      <li><span class="linear">𐜝</span> = print</li>
-      <li><span class="linear">𐝠</span> = receive user input (command line or input())</li>
-      <li><span class="linear">𐚁</span> = random number (1-100)</li>
-      <li><span class="linear">𐙟</span> = loop until flag is raised</li>
-      <li><span class="linear">𐝏</span> = raise flag (exit loop)</li>
-      <br/>
-      <h4>NodeJS I/O</h4>
-      <li><span class="linear">𐚮</span> = pipe in
-      <li><span class="linear">𐛄</span> = pipe out result of the line</li>
-<!--
-      <h4>Storage</h4>
-      𐚯 local storage (persistent in browser session)
-      𐜮 universal storage (sets or retrieves value on Cyclops-lang universal web db)
--->
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <h1>
+            Cyclops Lang
+            <span class="linear">𐙀</span>
+          </h1>
+          <p>
+            Cyclops or <span class="linear">'𐙀'</span> is a programming language that runs in JavaScript / NodeJS.
+          </p>
+          <p>
+            Cyclops is written in <a href="https://en.wikipedia.org/wiki/Linear_A_(script)">Linear A</a>,
+            a forgotten/undeciphered script used 3500-4500 years ago on the Greek island of Minos.
+          </p>
+          <p>
+            If you want to get into retro-programming, travel through time while teaching computer science, or make your code incomprehensible to anyone on earth, Cyclops is the right language for your project.
+            <br/>
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <h4>Cyclops Code</h4>
+          <code class="compare">
+            𐙀
+            <br/>
+            returns 'Cyclops𐙀 CyclopsLang.org'
+            <br/>
+            <br/>
+            𐜝 hello world
+            <br/>
+            returns 'hello world'
+            <br/>
+            <br/>
+            𐄓𐄊 𐄌
+            <br/>
+            returns 𐄔
+            <br/>
+            <br/>
+            𐝈𐜮 𐄝
+            <br/>
+            𐜝 𐝈𐜮 𐝔 𐄙
+            <br/>
+            returns 𐄜
+          </code>
+        </div>
+        <div class="col-sm-6">
+          <h4>Pseudocode</h4>
+          <code class="plain compare">
+            help();
+            <br/><br/><br/>
+            print('hello world');
+            <br/>
+            > 'hello world'
+            <br/>
+            <br/>
+            44 + 6
+            <br/>
+            > 50
+            <br/>
+            <br/>
+            var x = 500
+            <br/>
+            console.log(x - 100);
+            <br/>
+            > 400
+          </code>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <h2>Installing</h2>
+          <div class="well">
+            <strong>npm install cyclops-lang -g</strong>
+            <br/>
+            <strong>cyclops game.cyc</strong>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <h3>Open Source</h3>
+          <div class="centered">
+            <a href="https://github.com/mapmeld/cyclops">
+              <button>On GitHub</button>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <h3>Types</h3>
+          <p>
+            Commands are individual symbols in Linear A. Multiple characters can be the name of a variable or function.
+          </p>
+          <p>
+            Numbers are written in <a href="https://en.wikipedia.org/wiki/Aegean_numerals">Aegean numerals</a>.
+          </p>
+          <p>
+            Any non-Minoan characters are interpreted as strings.
+          </p>
 
-      <h4>Math</h4>
-      <p>Math is evaluated left-to-right, without order of operations. So 3 + 2 * 4 == 20 not 11</p>
-      <li>addition done by placing numbers on same line (𐄓𐄊 𐄌 returns 𐄔)</li>
-      <li><span class="linear">𐝔</span> = subtract</li>
-      <li><span class="linear">𐝑</span> = divide</li>
-      <li><span class="linear">𐙨</span> = multiply</li>
+          <h3>Guessing Game</h3>
+          <p>A guessing game written in Cyclops:</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <code class="compare">
+            𐙀<br/>
+            𐜝 I'm thinking of a number 1-100<br/>
+            𐘾𐘾 𐚁<br/>
+            𐙟<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;𐘽𐘽 𐝠 Guess a number:<br/>
+            <br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;𐘜 𐘽𐘽<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;𐚠 𐘾𐘾<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;𐜝 too high<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;𐚡 𐘾𐘾<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;𐜝 too low<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;𐙈 𐘾𐘾<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;𐝏<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;𐘩<br/>
+            𐙟<br/>
+            𐜝 you guessed correctly! you win!<br/>
+          </code>
+        </div>
+        <div class="col-sm-6">
+          <code class="compare plain">
+            help();<br/>
+            print("..a number 1-100");<br/>
+            var x = random(1, 100);<br/>
+            while(true) {<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;var y = input("Guess:");<br/>
+            <br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if y > x:<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("too high");<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if y < x:<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("too low");<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if y == x:<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+            }<br/>
+            print("you guessed correctly! you win!")<br/>
+          </code>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <h3>Commands</h3>
+          <li><span class="linear">𐙀</span> = help</li>
+          <li><span class="linear">𐜝</span> = print</li>
+          <li><span class="linear">𐝠</span> = receive user input (command line or input())</li>
+          <li><span class="linear">𐚁</span> = random number (1-100)</li>
+          <li><span class="linear">𐙟</span> = loop until flag is raised</li>
+          <li><span class="linear">𐝏</span> = raise flag (exit loop)</li>
+          <br/>
+          <!--
+          <h4>NodeJS I/O</h4>
+          <li><span class="linear">𐚮</span> = pipe in
+          <li><span class="linear">𐛄</span> = pipe out result of the line</li>
 
-      <h4>Conditional</h4>
-      <li><span class="linear">𐘜</span> = conditional switch</li>
-      <li><span class="linear">𐘩</span> = end conditional</li>
-      <li><span class="linear">𐙈</span> = equality (===)</li>
-      <li><span class="linear">𐚠</span> = greater-than
-      <li><span class="linear">𐚡</span> = less-than
-      <p>Conditionals if value of variable <span class="linear">𐚨𐚨</span> is greater than, less than, or equal to 5</p>
-      <code>
-        𐘜 𐚨𐚨
-        <br/>
-        &nbsp;&nbsp;&nbsp;&nbsp;𐚠 𐄉
-        <br/>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;𐜝 greater than 3
-        <br/>
-        &nbsp;&nbsp;&nbsp;&nbsp;𐚠 𐄋
-        <br/>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;𐜝 greater than 5, too
-        <br/>
-        &nbsp;&nbsp;&nbsp;&nbsp;𐚡 𐄋
-        <br/>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;𐜝 less than 5
-        <br/>
-        &nbsp;&nbsp;&nbsp;&nbsp;𐙈 𐄋
-        <br/>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;𐜝 equal to 5
-        <br/>
-        𐘩
-      </code>
+          <h4>Storage</h4>
+          𐚯 local storage (persistent in browser session)
+          𐜮 universal storage (sets or retrieves value on Cyclops-lang universal web db)
+          -->
 
-      <h4>Functions</h4>
-      <p>Write the squaring function <i>f(x) = x^2</i>. Let's name the function <span class="linear">𐝎𐝎</span>.
-        <br/>Inside the function, <span class="linear">𐝈</span> will represent the first parameter passed into the function,
-        followed by <span class="linear">𐝉, 𐝊, 𐝋</span>, and <span class="linear">𐝌</span></p>
-      <code>
-        𐛪 𐝎𐝎
-        <br/>
-        &nbsp;&nbsp;&nbsp;&nbsp;𐝈 𐙨 𐝈
-        <br/>
-        𐛫
-      </code>
-      <p>Now call the function:</p>
-      <code>
-        𐝎𐝎 𐄊
-        <br/>
-        > 𐄐𐄌
-      </code>
-    </ul>
+          <h3>Math</h3>
+          <p>Math is evaluated left-to-right, without order of operations. So 3 + 2 * 4 == 20 not 11</p>
+          <li>addition done by placing numbers on same line (<span class="linear">𐄓𐄊 𐄌</span> returns the sum <span class="linear">𐄔</span>)</li>
+          <li><span class="linear">𐝔</span> = subtract</li>
+          <li><span class="linear">𐝑</span> = divide</li>
+          <li><span class="linear">𐙨</span> = multiply</li>
 
-    <h3>Guessing Game</h3>
-    <p>A guessing game written in Cyclops:</p>
-    <code>
-      𐙀<br/>
-      𐜝 I'm thinking of a number 1-100<br/>
-      𐘾𐘾 𐚁<br/>
-      𐙟<br/>
-      &nbsp;&nbsp;&nbsp;&nbsp;𐘽𐘽 𐝠 Guess a number:<br/>
-      <br/>
-      &nbsp;&nbsp;&nbsp;&nbsp;𐘜 𐘽𐘽<br/>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;𐚠 𐘾𐘾<br/>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;𐜝 too high<br/>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;𐚡 𐘾𐘾<br/>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;𐜝 too low<br/>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;𐙈 𐘾𐘾<br/>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;𐝏<br/>
-      &nbsp;&nbsp;&nbsp;&nbsp;𐘩<br/>
-      𐙟<br/>
-      𐜝 you guessed correctly! you win!<br/>
-    </code>
+          <h3>Conditional</h3>
+          <li><span class="linear">𐘜</span> = conditional switch</li>
+          <li><span class="linear">𐘩</span> = end conditional</li>
+          <li><span class="linear">𐙈</span> = equality (===)</li>
+          <li><span class="linear">𐚠</span> = greater-than
+          <li><span class="linear">𐚡</span> = less-than
+          <p>Conditionals if value of variable <span class="linear">𐚨𐚨</span> is greater than, less than, or equal to 5</p>
+          <code>
+            𐘜 𐚨𐚨
+            <br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;𐚠 𐄉
+            <br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;𐜝 greater than 3
+            <br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;𐚠 𐄋
+            <br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;𐜝 greater than 5, too
+            <br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;𐚡 𐄋
+            <br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;𐜝 less than 5
+            <br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;𐙈 𐄋
+            <br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;𐜝 equal to 5
+            <br/>
+            𐘩
+          </code>
+        </div>
+      </div>
+      <div class="row">
+        <h3>Functions</h3>
+        <p>Declare a function with this character <span class="linear">𐛪</span> that looks like an archer.</p>
+        <p>Write the squaring function <i>f(x) = x^2</i>. Let's name the function <span class="linear">𐝎𐝎</span>.
+          <br/>Inside the function, <span class="linear">𐝈</span> will represent the first parameter passed into the function,
+          followed by <span class="linear">𐝉, 𐝊, 𐝋</span>, and <span class="linear">𐝌</span></p>
+        <code>
+          𐛪 𐝎𐝎
+          <br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;𐝈 𐙨 𐝈
+          <br/>
+          𐛫
+        </code>
+        <p>Now call the function:</p>
+        <code>
+          𐝎𐝎 𐄊
+          <br/>
+          > 𐄐𐄌
+        </code>
+      </div>
+    </div>
   </body>
 </html>
