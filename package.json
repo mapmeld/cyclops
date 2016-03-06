@@ -26,6 +26,7 @@
   "homepage": "https://github.com/mapmeld/cyclops#readme",
   "dependencies": {
     "aegean-numbers": "^1.0.1",
-    "commander": "^2.9.0"
+    "commander": "^2.9.0",
+    "readline-sync": "^1.4.1"
   }
 }

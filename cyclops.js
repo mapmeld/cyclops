@@ -1,5 +1,6 @@
 if (typeof module !== 'undefined') {
   const aegean = require('aegean-numbers');
+  const prompt = require('readline-sync').question;
 }
 
 function isLinearA(txt) {
@@ -20,10 +21,13 @@ function cyclops(srccode, callback) {
   var lines = srccode.trim().split(/\r\n|\n/);
 
   var glovars = {};
+  var loops = [];
+  var conditionals = [];
+  var response;
 
   function parseLine(i) {
     if (i >= lines.length) {
-      return callback(null, lines[lines.length - 1]);
+      return callback(null, response);
     }
 
     var parser = lines[i];
@@ -60,7 +64,11 @@ function cyclops(srccode, callback) {
 
       function parseStringOrVar(p) {
         if (glovars[p]) {
-          return glovars[p];
+          if (isNaN(glovars[p] * 1)) {
+            return glovars[p];
+          } else {
+            return glovars[p] * 1;
+          }
         }
         return p;
       }
@@ -80,9 +88,30 @@ function cyclops(srccode, callback) {
 
         // print command
         else if (part === '𐜝') {
-          var printed = parseCode(0, parts.slice(1));
+          var printed = parseCode('', parts.slice(1));
           console.log(printed);
           return printed;
+        }
+
+        // input command
+        else if (part === '𐝠') {
+          var promptStr = parseCode('', parts.slice(1));
+          if (typeof module === 'undefined') {
+            return input(promptStr);
+          } else {
+            return prompt(promptStr);
+          }
+        }
+
+        // loop start or end
+        else if (part === '𐙟') {
+          if (loops.length) {
+            i = loops[0];
+            return 1;
+          } else {
+            loops.push(i);
+            return 1;
+          }
         }
 
         // subtraction operator
@@ -112,35 +141,87 @@ function cyclops(srccode, callback) {
           return initialVal / divisor;
         }
 
-        else {
-          // one symbol but not a keyword, is variable
-          if (isLinearA(part)) {
-            // setting variable
-            if (!glovars[part]) {
-              glovars[part] = 0;
-            }
-            var combined = parseCode(initialVal + glovars[part], parts.slice(1));
-            if (firstPart) {
-              glovars[part] = combined;
-            }
-            return combined;
+        // random number function
+        else if (part === '𐚁') {
+          return Math.ceil(Math.random() * 100);
+        }
+
+        // conditional
+        else if (part === '𐘜') {
+          var conditionalVal = parseCode(0, parts.slice(1));
+          conditionals.push(conditionalVal);
+        }
+
+        // end conditional
+        else if (part === '𐘩') {
+          if (!conditionals.length) {
+            return callback('too many end-if marks');
           }
-          return parseStringOrVar(part) + parseCode(' ', parts.slice(1));
+          conditionals.pop();
+        }
+
+        // greater than, less than, equal to
+        else if (['𐚠', '𐚡', '𐙈'].indexOf(part) > -1) {
+          if (!conditionals.length) {
+            return callback('comparison without conditional');
+          }
+          var compareVal = parseCode(0, parts.slice(1));
+          var conditionalVal = conditionals[conditionals.length - 1];
+          var correct;
+          if (part === '𐚠') {
+            correct = conditionalVal > compareVal;
+          }
+          if (part === '𐚡') {
+            correct = conditionalVal < compareVal;
+          }
+          if (part === '𐙈') {
+            correct = (conditionalVal == compareVal);
+          }
+          if (!correct) {
+            /* skip to next interesting conditional */
+            i++;
+            while (i < lines.length
+              && lines[i].indexOf('𐚠') === -1
+              && lines[i].indexOf('𐚡') === -1
+              && lines[i].indexOf('𐙈') === -1
+              && lines[i].indexOf('𐘩') === -1) {
+              i++;
+            }
+            i--;
+          }
+          return correct;
+        }
+
+        // break loop flag
+        else if (part === '𐝏') {
+          if (!loops.length) {
+            return callback('break loop flag without loop');
+          }
+          while (i < lines.length && lines[i].indexOf('𐙟') === -1) {
+            i++;
+          }
+          loops.pop();
+          return 1;
+        }
+
+        else {
+          // one symbol but not a keyword
+          return '';
         }
       } else {
         if (isLinearA(part)) {
           // setting / retrieving variable
           if (!glovars[part]) {
-            glovars[part] = 0;
+            glovars[part] = '';
           }
-          var combined = parseCode(initialVal + (firstPart ? 0 : glovars[part]), parts.slice(1));
+          var combined = parseCode(initialVal + (firstPart ? '' : glovars[part]), parts.slice(1));
 
           if (firstPart) {
             glovars[part] = combined;
           }
           return combined;
         }
-        return parseStringOrVar(part) + parseCode(' ', parts.slice(1));
+        return parseStringOrVar(part) + parseCode('', parts.slice(1));
       }
     }
 
@@ -148,7 +229,7 @@ function cyclops(srccode, callback) {
     if (resultOfLine[0] === '0') {
       resultOfLine = resultOfLine.substring(1);
     }
-    lines[i] = aegean(resultOfLine).trim();
+    response = aegean(resultOfLine).trim();
     parseLine(i + 1);
   }
   parseLine(0);

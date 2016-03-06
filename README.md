@@ -7,6 +7,8 @@ a forgotten/undeciphered script used 3500-4500 years ago on the Greek island of 
 
 ## Sample Code
 
+<img src="http://i.imgur.com/cMgsSMl.png"/>
+
 See <a href="http://cyclopslang.org">http://cyclopslang.org</a> to make sure you load the
 web fonts to see the programs.
 
