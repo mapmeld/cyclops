@@ -1,6 +1,6 @@
 if (typeof module !== 'undefined') {
-  const aegean = require('aegean-numbers');
-  const prompt = require('readline-sync').question;
+  var aegean = require('aegean-numbers');
+  var prompt = require('readline-sync').question;
 }
 
 function isLinearA(txt) {
