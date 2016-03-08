@@ -110,7 +110,7 @@ function cyclops(srccode, callback, logme) {
       } else if (part.length === 2) {
         // help command
         if (part === '𐙀') {
-          var printed = 'Cyclops𐙀 1.1.1 CyclopsLang.org';
+          var printed = 'Cyclops𐙀 1.1.2 CyclopsLang.org';
           logger(printed);
           return printed;
         }
