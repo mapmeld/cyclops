@@ -49,7 +49,7 @@ describe('print', function() {
       if (err) {
         done(err);
       } else {
-        assert.equal(output, 'Cyclops𐙀 CyclopsLang.org');
+        assert.equal(output, 'Cyclops𐙀 𐄇𐄇𐄇 CyclopsLang.org');
         done();
       }
     });

@@ -7,15 +7,15 @@ html, body {
   font-family: sans-serif;
 }
 
-code, .linear {
-  font-family: 'Aegean35', sans-serif;
+code, .linear, .CodeMirror {
+  font-family: monospace, 'Aegean35', sans-serif;
 }
 
 .linear {
   font-size: 120%;
 }
 
-code {
+code, .CodeMirror {
   display: block;
   color: #000;
   font-size: 16px;
@@ -23,14 +23,11 @@ code {
   padding: 10px;
 }
 
-code.plain {
-  font-family: monospace;
-}
-
-code.compare {
+code.compare, .CodeMirror {
   width: 95%;
   border: 1px solid #444;
   float: left;
+  border-radius: 4px;
 }
 
 .clearfix {
@@ -40,4 +37,10 @@ code.compare {
 .centered {
   text-align: center;
   margin-top: 10px;
+}
+
+button {
+  padding: 14px;
+  background: #4a4;
+  border-radius: 8px;
 }

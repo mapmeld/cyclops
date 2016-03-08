@@ -12,6 +12,25 @@ a forgotten/undeciphered script used 3500-4500 years ago on the Greek island of 
 See <a href="http://cyclopslang.org">http://cyclopslang.org</a> to make sure you load the
 web fonts to see the programs.
 
+## Install and Test
+
+Prerequisites: NodeJS
+
+```bash
+# installing
+npm install cyclops-lang -g
+cyclops examples/guess.cyc
+
+# testing
+mocha
+```
+
+## Todo
+
+- Add other keywords!  There are over 300 symbols in Linear A.
+- Function chaining: multiply(2, multiply(3, 4))
+
+
 ## Language Support
 
 ### Linear A Font

@@ -17,7 +17,14 @@ function isLinearA(txt) {
   return true;
 }
 
-function cyclops(srccode, callback) {
+function cyclops(srccode, callback, logme) {
+  if (!logme) {
+    logme = console.log;
+  }
+  var logger = function (raw) {
+    logme(aegean(raw));
+  };
+
   var lines = srccode.trim().split(/\r\n|\n/);
 
   var glovars = {};
@@ -30,7 +37,7 @@ function cyclops(srccode, callback) {
 
   function parseLine(i) {
     if (i >= lines.length) {
-      return callback(null, response);
+      return callback(null, aegean(response));
     }
 
     var parser = lines[i];
@@ -103,15 +110,15 @@ function cyclops(srccode, callback) {
       } else if (part.length === 2) {
         // help command
         if (part === '𐙀') {
-          var printed = 'Cyclops𐙀 CyclopsLang.org';
-          console.log(printed);
+          var printed = 'Cyclops𐙀 1.1.1 CyclopsLang.org';
+          logger(printed);
           return printed;
         }
 
         // print command
         else if (part === '𐜝') {
           var printed = parseCode('', parts.slice(1));
-          console.log(printed);
+          logger(printed);
           return printed;
         }
 

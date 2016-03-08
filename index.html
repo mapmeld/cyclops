@@ -4,6 +4,7 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" type="text/css" href="styles/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="styles/codemirror.css"/>
     <link rel="stylesheet" type="text/css" href="styles/linear.css"/>
   </head>
   <body>
@@ -26,33 +27,26 @@
       </div>
       <div class="row">
         <div class="col-sm-6">
-          <h4>Cyclops Code</h4>
-          <code class="compare">
-            𐙀
-            <br/>
-            returns 'Cyclops𐙀 CyclopsLang.org'
-            <br/>
-            <br/>
-            𐜝 hello world
-            <br/>
-            returns 'hello world'
-            <br/>
-            <br/>
-            𐄓𐄊 𐄌
-            <br/>
-            returns 𐄔
-            <br/>
-            <br/>
-            𐝈𐜮 𐄝
-            <br/>
-            𐜝 𐝈𐜮 𐝔 𐄙
-            <br/>
-            returns 𐄜
-          </code>
+          <h4 id="codeheader">Cyclops Code</h4>
+          <textarea id="interpreter" class="compare">
+𐙀
+> 'Cyclops𐙀 𐄇𐄇𐄇 - CyclopsLang.org'
+
+𐜝 hello world
+> 'hello world'
+
+𐄓𐄊 𐄌
+> 𐄔
+
+𐝈𐜮 𐄝
+𐜝 𐝈𐜮 𐝔 𐄙
+> 𐄜
+          </textarea>
+          <button class="hide linear">Run 𐛪></button>
         </div>
         <div class="col-sm-6">
-          <h4>Pseudocode</h4>
-          <code class="plain compare">
+          <h4 id="sideheader">Pseudocode</h4>
+          <code id="consoler" class="plain compare">
             help();
             <br/><br/><br/>
             print('hello world');
@@ -74,7 +68,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-4">
           <h2>Installing</h2>
           <div class="well">
             <strong>npm install cyclops-lang -g</strong>
@@ -82,7 +76,15 @@
             <strong>cyclops game.cyc</strong>
           </div>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-4">
+          <h3>Plz Help</h3>
+          <div class="well">
+            Can you decipher Linear A?
+            <br/>
+            There are over 300 symbols in Linear A... what should the rest of our keywords be?
+          </div>
+        </div>
+        <div class="col-sm-4">
           <h3>Open Source</h3>
           <div class="well">
             <a href="https://github.com/mapmeld/cyclops">
@@ -235,5 +237,11 @@
     <br/>
     <br/>
     <br/>
+    <script src="/scripts/aegean-numbers.js"></script>
+    <script src="/cyclops.js"></script>
+    <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="/scripts/codemirror.js"></script>
+    <script src="/scripts/javascript.js"></script>
+    <script src="/scripts/interpreter.js"></script>
   </body>
 </html>
