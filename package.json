@@ -1,6 +1,6 @@
 {
   "name": "cyclops-lang",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Toy programming language written in Linear A",
   "main": "cyclops.js",
   "scripts": {

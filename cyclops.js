@@ -125,11 +125,7 @@ function cyclops(srccode, callback, logme) {
         // input command
         else if (part === '𐝠') {
           var promptStr = parseCode('', parts.slice(1));
-          if (typeof module === 'undefined') {
-            return aegean(input(promptStr), true);
-          } else {
-            return aegean(prompt(promptStr), true);
-          }
+          return aegean(prompt(promptStr), true);
         }
 
         // loop start or end

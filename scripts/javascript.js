@@ -40,6 +40,7 @@ CodeMirror.defineMode("javascript", function(config, parserConfig) {
       "𐘩": kw("𐘩"),
       "𐜝": kw("𐜝"),
       "𐙀": kw("𐙀"),
+      "𐝠": A,
       "𐛪": kw("𐛪"), "𐛫": kw("𐛫")
     };
 
