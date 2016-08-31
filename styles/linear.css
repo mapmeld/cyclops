@@ -1,0 +1,46 @@
+@font-face {
+  font-family: 'Aegean35';
+  src: url(Aegean.ttf);
+}
+
+html, body {
+  font-family: sans-serif;
+}
+
+code, .linear, .CodeMirror {
+  font-family: monospace, 'Aegean35', sans-serif;
+}
+
+.linear {
+  font-size: 120%;
+}
+
+code, .CodeMirror {
+  display: block;
+  color: #000;
+  font-size: 16px;
+  background: #eee;
+  padding: 10px;
+}
+
+code.compare, .CodeMirror {
+  width: 95%;
+  border: 1px solid #444;
+  float: left;
+  border-radius: 4px;
+}
+
+.clearfix {
+  clear: both;
+}
+
+.centered {
+  text-align: center;
+  margin-top: 10px;
+}
+
+button {
+  padding: 14px;
+  background: #4a4;
+  border-radius: 8px;
+}

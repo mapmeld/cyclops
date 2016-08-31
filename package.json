@@ -1,0 +1,27 @@
+{
+  "name": "cyclops-lang-generator",
+  "version": "1.1.2",
+  "description": "Toy programming language generator",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mapmeld/cyclops.git"
+  },
+  "author": "Nick Doiron <ndoiron@mapmeld.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mapmeld/cyclops/issues"
+  },
+  "homepage": "https://github.com/mapmeld/cyclops#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "compression": "^1.6.2",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.14.0",
+    "jade": "^1.11.0",
+    "mongoose": "^4.5.10"
+  }
+}
