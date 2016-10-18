@@ -1,29 +1,22 @@
 if (typeof module !== 'undefined') {
-  var aegean = require('aegean-numbers');
   var prompt = require('readline-sync').question;
 }
 
-function isLinearA(txt) {
-  for (var c = 0; c < txt.length; c++) {
-    var cdpt = txt.codePointAt(c);
-    if (c % 2) {
-      if (cdpt < 56832 || cdpt > 57191) {
-        return false;
-      }
-    } else if (cdpt < 67072 || cdpt > 67431) {
-      return false;
-    }
-  }
-  return true;
-}
+var numberConversion = function (raw) {
+  return raw;
+};
 
 function cyclops(srccode, callback, logme) {
   if (!logme) {
     logme = console.log;
   }
   var logger = function (raw) {
-    logme(aegean(raw));
+    logme(numberConversion(raw));
   };
+  var keys = ['xLOOPx', 'xSWITCHx', 'xSWITCHEDx', 'xSUBTRACTx', 'xDIVIDEx', 'xMULTIPLYx',
+             'xBREAKx', 'xFUNCENDx', 'xFUNCSTARTx', 'xPARAMONEx', 'xPARAMTWOx', 'xPARAMTHREEx',
+             'xPARAMFOURx', 'xPARAMFIVEx', 'xPRINTx', 'xINPUTx', 'xHELPx', 'xLANGNAMEx', 'xVERSIONx',
+             'xWEBSITEx', 'xRANDx', 'xGREATERx', 'xLESSERx', 'xDUBEQUALx', 'xADDx'];
 
   var lines = srccode.trim().split(/\r\n|\n/);
 
@@ -37,26 +30,32 @@ function cyclops(srccode, callback, logme) {
 
   function parseLine(i) {
     if (i >= lines.length) {
-      return callback(null, aegean(response));
+      return callback(null, numberConversion(response));
     }
 
     var parser = lines[i];
+
+    /*
     // block Arabic numerals
     if (parser.match(/\d/)) {
       throw 'An error occurred: Arabic numerals not allowed.';
     }
+    */
+
     // convert numerals
-    parser = (aegean(parser, true) + '');
+    parser = (numberConversion(parser, true) + '');
     // split into parts
     parser = parser.trim().split(/\s+/);
     var line = [];
     for (var p = 0; p < parser.length; p++) {
+      /*
       // recombine line so spaced out strings still work
-      if (p && !(parser[p] + parser[p-1]).match(/\d/) && !isLinearA(parser[p -1]) && !isLinearA(parser[p])) {
+      if (p && !(parser[p] + parser[p-1]).match(/\d/)) {
         line[line.length - 1] += ' ' + parser[p];
       } else {
+      */
         line.push(parser[p]);
-      }
+      //}
     }
 
     // get a result for this line
@@ -68,6 +67,9 @@ function cyclops(srccode, callback, logme) {
       }
       if (!parts.length) {
         return initialVal;
+      }
+      if (parts.length === 1) {
+        parts = parts[0].split(/\s+/);
       }
 
       var part = parts[0];
@@ -84,22 +86,22 @@ function cyclops(srccode, callback, logme) {
       }
 
       if (inFunction) {
-        if (part === '𐛫') {
+        if (part === 'xFUNCENDx') {
           return response;
         }
-        if (part === '𐝈') {
+        if (part === 'xPARAMONEx') {
           part = params[0];
         }
-        if (part === '𐝉') {
+        if (part === 'xPARAMTWOx') {
           part = params[1];
         }
-        if (part === '𐝊') {
+        if (part === 'xPARAMTHREEx') {
           part = params[2];
         }
-        if (part === '𐝋') {
+        if (part === 'xPARAMFOURx') {
           part = params[3];
         }
-        if (part === '𐝌') {
+        if (part === 'xPARAMFIVEx') {
           part = params[4];
         }
       }
@@ -107,29 +109,29 @@ function cyclops(srccode, callback, logme) {
       if (!isNaN(part * 1)) {
         // number
         return parseCode(initialVal * 1 + part * 1, parts.slice(1));
-      } else if (part.length === 2) {
+      } else if (keys.indexOf(part) > -1) {
         // help command
-        if (part === '𐙀') {
-          var printed = 'Cyclops𐙀 1.1.2 CyclopsLang.org';
+        if (part === 'xHELPx') {
+          var printed = 'xLANGNAMEx xVERSIONx xWEBSITEx';
           logger(printed);
           return printed;
         }
 
         // print command
-        else if (part === '𐜝') {
+        else if (part === 'xPRINTx') {
           var printed = parseCode('', parts.slice(1));
           logger(printed);
           return printed;
         }
 
         // input command
-        else if (part === '𐝠') {
+        else if (part === 'xINPUTx') {
           var promptStr = parseCode('', parts.slice(1));
-          return aegean(prompt(promptStr), true);
+          return numberConversion(prompt(promptStr), true);
         }
 
         // loop start or end
-        else if (part === '𐙟') {
+        else if (part === 'xLOOPx') {
           if (loops.length) {
             i = loops[0];
             return 1;
@@ -139,8 +141,17 @@ function cyclops(srccode, callback, logme) {
           }
         }
 
+        // addition operator
+        else if (part === 'xADDx') {
+          var adder = parseCode(0, parts.slice(1));
+          if (isNaN(adder * 1)) {
+            throw 'No number to add on line ' + (i + 1);
+          }
+          return initialVal * 1 + adder * 1;
+        }
+
         // subtraction operator
-        else if (part === '𐝔') {
+        else if (part === 'xSUBTRACTx') {
           var subtractor = parseCode(0, parts.slice(1));
           if (isNaN(subtractor * 1)) {
             throw 'No number to subtract on line ' + (i + 1);
@@ -149,7 +160,7 @@ function cyclops(srccode, callback, logme) {
         }
 
         // multiplication operator
-        else if (part === '𐙨') {
+        else if (part === 'xMULTIPLYx') {
           var multiplier = parseCode(0, parts.slice(1));
           if (isNaN(multiplier * 1)) {
             throw 'No number to multiply on line ' + (i + 1);
@@ -158,7 +169,7 @@ function cyclops(srccode, callback, logme) {
         }
 
         // division operator
-        else if (part === '𐝑') {
+        else if (part === 'xDIVIDEx') {
           var divisor = parseCode(0, parts.slice(1));
           if (isNaN(divisor * 1)) {
             throw 'No number to divide on line ' + (i + 1);
@@ -167,18 +178,18 @@ function cyclops(srccode, callback, logme) {
         }
 
         // random number function
-        else if (part === '𐚁') {
+        else if (part === 'xRANDx') {
           return Math.ceil(Math.random() * 100);
         }
 
         // conditional
-        else if (part === '𐘜') {
+        else if (part === 'xSWITCHx') {
           var conditionalVal = parseCode(0, parts.slice(1));
           conditionals.push(conditionalVal);
         }
 
         // end conditional
-        else if (part === '𐘩') {
+        else if (part === 'xSWITCHEDx') {
           if (!conditionals.length) {
             throw 'too many end-if marks';
           }
@@ -186,30 +197,30 @@ function cyclops(srccode, callback, logme) {
         }
 
         // greater than, less than, equal to
-        else if (['𐚠', '𐚡', '𐙈'].indexOf(part) > -1) {
+        else if (['xGREATERx', 'xLESSERx', 'xDUBEQUALx'].indexOf(part) > -1) {
           if (!conditionals.length) {
             throw 'comparison without conditional';
           }
           var compareVal = parseCode(0, parts.slice(1));
           var conditionalVal = conditionals[conditionals.length - 1];
           var correct;
-          if (part === '𐚠') {
+          if (part === 'xGREATERx') {
             correct = conditionalVal > compareVal;
           }
-          if (part === '𐚡') {
+          if (part === 'xLESSERx') {
             correct = conditionalVal < compareVal;
           }
-          if (part === '𐙈') {
+          if (part === 'xDUBEQUALx') {
             correct = (conditionalVal == compareVal);
           }
           if (!correct) {
             /* skip to next interesting conditional */
             i++;
             while (i < lines.length
-              && lines[i].indexOf('𐚠') === -1
-              && lines[i].indexOf('𐚡') === -1
-              && lines[i].indexOf('𐙈') === -1
-              && lines[i].indexOf('𐘩') === -1) {
+              && lines[i].indexOf('xGREATERx') === -1
+              && lines[i].indexOf('xLESSERx') === -1
+              && lines[i].indexOf('xDUBEQUALx') === -1
+              && lines[i].indexOf('xSWITCHEDx') === -1) {
               i++;
             }
             i--;
@@ -218,11 +229,11 @@ function cyclops(srccode, callback, logme) {
         }
 
         // break loop flag
-        else if (part === '𐝏') {
+        else if (part === 'xBREAKx') {
           if (!loops.length) {
             throw 'break loop flag without loop';
           }
-          while (i < lines.length && lines[i].indexOf('𐙟') === -1) {
+          while (i < lines.length && lines[i].indexOf('xLOOPx') === -1) {
             i++;
           }
           loops.pop();
@@ -230,47 +241,46 @@ function cyclops(srccode, callback, logme) {
         }
 
         // start function
-        else if (part === '𐛪') {
-          if (parts.length <= 1 || !isLinearA(parts[1])) {
+        else if (part === 'xFUNCSTARTx') {
+          if (parts.length <= 1) {
             throw 'function did not have valid name';
           }
-          if (!glofunc[parts[1]]) {
+          var myname = parts[1];
+          if (!glofunc[myname]) {
             // declare function
             var start = i;
-            while (i < lines.length && lines[i].indexOf('𐛫') === -1) {
+            while (i < lines.length && lines[i].indexOf('xFUNCENDx') === -1) {
               i++;
             }
-            glofunc[parts[1]] = [start, i];
+            glofunc[myname] = [start, i];
           } else {
-            i = glofunc[parts[1]][1];
+            i = glofunc[myname][1];
           }
-        }
-
-        else {
+        } else {
           // one symbol but not a keyword
           return '';
         }
-      } else {
-        if (isLinearA(part)) {
-          // check if it's a function
-          if (glofunc[part]) {
-            response = runFunction(part, parts.slice(1));
-            return response;
-          } else {
-            // setting / retrieving variable
-            if (!glovars[part]) {
-              glovars[part] = '';
-            }
-            var combined = parseCode(initialVal + (firstPart ? '' : glovars[part]), parts.slice(1));
-
-            if (firstPart) {
-              glovars[part] = combined;
-            }
-            return combined;
-          }
+      } else if (glofunc[part] || glovars[part]) {
+        // check if it's a function
+        if (glofunc[part]) {
+          response = runFunction(part, parts.slice(1));
+          return response;
         } else {
-          return parseStringOrVar(part) + parseCode('', parts.slice(1));
+          // setting / retrieving variable
+          if (!glovars[part]) {
+            glovars[part] = '';
+          }
+          var combined = parseCode(initialVal + (firstPart ? '' : glovars[part]), parts.slice(1));
+
+          if (firstPart) {
+            glovars[part] = combined;
+          }
+          return combined;
         }
+      } else if (firstPart) {
+        glovars[part] = parseCode('', parts.slice(1));
+      } else {
+        return parseStringOrVar(part) + parseCode('', parts.slice(1));
       }
     }
 
@@ -278,7 +288,7 @@ function cyclops(srccode, callback, logme) {
     if (resultOfLine[0] === '0') {
       resultOfLine = resultOfLine.substring(1);
     }
-    response = aegean(resultOfLine).trim();
+    response = numberConversion(resultOfLine).trim();
     if (inFunction) {
       return response;
     }

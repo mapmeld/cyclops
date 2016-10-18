@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link rel="stylesheet" type="text/css" href="styles/bootstrap.min.css"/>
-    <link rel="stylesheet" type="text/css" href="styles/codemirror.css"/>
-    <link rel="stylesheet" type="text/css" href="styles/linear.css"/>
+    <link rel="stylesheet" type="text/css" href="../styles/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../styles/codemirror.css"/>
+    <link rel="stylesheet" type="text/css" href="./styles/custom.css"/>
   </head>
   <body>
     <div class="container">
@@ -13,11 +13,11 @@
         <div class="col-sm-12">
           <h1>
             Cyclops Lang.org
-            <span class="linear">𐙀</span>
+            <span class="linear">xHELPx</span>
           </h1>
           <br/><br/>
           <p style="font-size: 18px">
-            Cyclops or <span class="linear">'𐙀'</span> is a programming language written in <a href="https://en.wikipedia.org/wiki/Linear_A_(script)">Linear A</a>,
+            Cyclops or <span class="linear">'xHELPx'</span> is a programming language written in <a href="https://en.wikipedia.org/wiki/Linear_A_(script)">Linear A</a>,
             a forgotten/undeciphered script used 3500-4500 years ago on the Greek island of Minos.
           </p>
           <p style="font-size: 18px">
@@ -31,28 +31,28 @@
         <div class="col-sm-6">
           <h4 id="codeheader">Cyclops Code</h4>
           <textarea id="interpreter" class="compare">
-𐙀
-> 'Cyclops𐙀 𐄇𐄇𐄈 - CyclopsLang.org'
+xHELPx
+> 'xLANGNAMEx xVERSIONx xWEBSITEx'
 
 Printing
-𐜝 hello world
+xPRINTx hello world
 > 'hello world'
 
 Math
-𐄓𐄊 𐄌
-> 𐄔
+44 6
+> 50
 
 Variables
-𐝈𐜮 𐄝
-𐜝 𐝈𐜮 𐝔 𐄙
-> 𐄜
+VARONE 50
+xPRINTx VARONE xSUBTRACTx 10
+> 40
 
 Function
-𐛪 𐝎𐝎
-&nbsp;&nbsp;𐝈 𐙨 𐝈
-𐛫
+xFUNCSTARTx FUNCONE
+&nbsp;&nbsp;xPARAMONEx xMULTIPLYx xPARAMONEx
+xFUNCENDx
           </textarea>
-          <button class="hide linear">Run 𐛪></button>
+          <button class="hide linear">Run xRUNx></button>
         </div>
         <div class="col-sm-6">
           <h4 id="sideheader">Pseudocode</h4>
@@ -101,22 +101,22 @@ Function
       <div class="row">
         <div class="col-sm-6">
           <code class="compare">
-            𐙀<br/>
-            𐜝 I'm thinking of a number one to one hundred<br/>
-            𐘾𐘾 𐚁<br/>
-            𐙟<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;𐘽𐘽 𐝠 Guess a number:<br/>
+            xHELPx<br/>
+            xPRINTx I'm thinking of a number one to one hundred<br/>
+            VARTWO xRANDx<br/>
+            xLOOPx<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;VARTHREE xINPUTx Guess a number:<br/>
             <br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;𐘜 𐘽𐘽<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;𐚠 𐘾𐘾<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;𐜝 too high<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;𐚡 𐘾𐘾<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;𐜝 too low<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;𐙈 𐘾𐘾<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;𐝏<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;𐘩<br/>
-            𐙟<br/>
-            𐜝 you guessed correctly! you win!<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;xSWITCHx VARTHREE<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xGREATERx VARTWO<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xPRINTx too high<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xLESSERx VARTWO<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xPRINTx too low<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xDUBEQUALx VARTWO<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xBREAKx<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;xSWITCHEDx<br/>
+            xLOOPx<br/>
+            xPRINTx you guessed correctly! you win!<br/>
           </code>
         </div>
         <div class="col-sm-6">
@@ -171,79 +171,70 @@ Function
       <div class="row">
         <div class="col-sm-12">
           <h3>Commands</h3>
-          <li><span class="linear">𐙀</span> = help</li>
-          <li><span class="linear">𐜝</span> = print</li>
-          <li><span class="linear">𐝠</span> = receive user input (command line or input())</li>
-          <li><span class="linear">𐚁</span> = random number (1-100)</li>
-          <li><span class="linear">𐙟</span> = loop until flag is raised</li>
-          <li><span class="linear">𐝏</span> = raise flag (exit loop)</li>
+          <li><span class="linear">xHELPx</span> = help</li>
+          <li><span class="linear">xPRINTx</span> = print</li>
+          <li><span class="linear">xINPUTx</span> = receive user input (command line or input())</li>
+          <li><span class="linear">xRANDx</span> = random number (1-100)</li>
+          <li><span class="linear">xLOOPx</span> = loop until flag is raised</li>
+          <li><span class="linear">xBREAKx</span> = raise flag (exit loop)</li>
           <br/>
-          <!--
-          <h4>NodeJS I/O</h4>
-          <li><span class="linear">𐚮</span> = pipe in
-          <li><span class="linear">𐛄</span> = pipe out result of the line</li>
-
-          <h4>Storage</h4>
-          𐚯 local storage (persistent in browser session)
-          𐜮 universal storage (sets or retrieves value on Cyclops-lang universal web db)
-          -->
 
           <h3>Math</h3>
-          <p>Math is evaluated left-to-right, without order of operations. So 3 + 2 * 4 == 20 not 11</p>
+          <p>Math is evaluated left-to-right, without order of operations. So 3 + 2 * 4 == 20 not 11. It might be easier to do one math operation at a time.</p>
           <li>addition done by placing numbers on same line (<span class="linear">𐄓𐄊 𐄌</span> returns the sum <span class="linear">𐄔</span>)</li>
-          <li><span class="linear">𐝔</span> = subtract</li>
-          <li><span class="linear">𐝑</span> = divide</li>
-          <li><span class="linear">𐙨</span> = multiply</li>
+          <li><span class="linear">xSUBTRACTx</span> = subtract</li>
+          <li><span class="linear">xDIVIDEx</span> = divide</li>
+          <li><span class="linear">xMULTIPLYx</span> = multiply</li>
 
           <h3>Conditional</h3>
-          <li><span class="linear">𐘜</span> = conditional switch</li>
-          <li><span class="linear">𐘩</span> = end conditional</li>
-          <li><span class="linear">𐙈</span> = equality (===)</li>
-          <li><span class="linear">𐚠</span> = greater-than
-          <li><span class="linear">𐚡</span> = less-than
-          <p>Conditionals if value of variable <span class="linear">𐚨𐚨</span> is greater than, less than, or equal to 5</p>
+          <li><span class="linear">xSWITCHx</span> = conditional switch</li>
+          <li><span class="linear">xSWITCHEDx</span> = end conditional</li>
+          <li><span class="linear">xDUBEQUALx</span> = equality (===)</li>
+          <li><span class="linear">xGREATERx</span> = greater-than
+          <li><span class="linear">xLESSERx</span> = less-than
+          <p>Conditionals if value of variable <span class="linear">VARONE</span> is greater than, less than, or equal to 5</p>
           <code>
-            𐘜 𐚨𐚨
+            xSWITCHx VARONE
             <br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;𐚠 𐄉
+            &nbsp;&nbsp;&nbsp;&nbsp;xGREATERx 𐄉
             <br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;𐜝 greater than 3
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xPRINTx greater than 3
             <br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;𐚠 𐄋
+            &nbsp;&nbsp;&nbsp;&nbsp;xGREATERx 𐄋
             <br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;𐜝 greater than 5, too
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xPRINTx greater than 5, too
             <br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;𐚡 𐄋
+            &nbsp;&nbsp;&nbsp;&nbsp;xLESSERx 𐄋
             <br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;𐜝 less than 5
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xPRINTx less than 5
             <br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;𐙈 𐄋
+            &nbsp;&nbsp;&nbsp;&nbsp;xDUBEQUALx 𐄋
             <br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;𐜝 equal to 5
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xPRINTx equal to 5
             <br/>
-            𐘩
+            xSWITCHEDx
           </code>
         </div>
       </div>
       <div class="row">
         <div class="col-sm-12">
           <h3>Functions</h3>
-          <p>Declare a function with this character <span class="linear">𐛪</span> that looks like an archer.
-            <br/>Inside the function, <span class="linear">𐝈</span> will represent the first parameter passed into the function,
-            followed by <span class="linear">𐝉, 𐝊, 𐝋</span>, and <span class="linear">𐝌</span>
+          <p>Declare a function with this character <span class="linear">xFUNCSTARTx</span> that looks like an archer.
+            <br/>Inside the function, <span class="linear">xPARAMONEx</span> will represent the first parameter passed into the function,
+            followed by <span class="linear">xPARAMTWOx, xPARAMTHREEx, xPARAMFOURx</span>, and <span class="linear">xPARAMFIVEx</span>
           </p>
-          <p>Write the squaring function <i>f(x) = x * x</i>. Let's name the function <span class="linear">𐝎𐝎</span>.
+          <p>Write the squaring function <i>f(x) = x * x</i>. Let's name the function <span class="linear">FUNCONE</span>.
           </p>
           <code>
-            𐛪 𐝎𐝎
+            xFUNCSTARTx FUNCONE
             <br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;𐝈 𐙨 𐝈
+            &nbsp;&nbsp;&nbsp;&nbsp;xPARAMONEx xMULTIPLYx xPARAMONEx
             <br/>
-            𐛫
+            xFUNCENDx
           </code>
           <p>Now call the function:</p>
           <code>
-            𐝎𐝎 𐄊
+            FUNCONE 𐄊
             <br/>
             > 𐄐𐄌
           </code>
@@ -253,11 +244,13 @@ Function
     <br/>
     <br/>
     <br/>
+    <!--
     <script src="/scripts/aegean-numbers.js"></script>
-    <script src="/cyclops.js"></script>
+  -->
+    <script src="./cyclops.js"></script>
     <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
-    <script src="/scripts/codemirror.js"></script>
-    <script src="/scripts/javascript.js"></script>
-    <script src="/scripts/interpreter.js"></script>
+    <script src="../scripts/codemirror.js"></script>
+    <script src="../scripts/javascript.js"></script>
+    <script src="../scripts/interpreter.js"></script>
   </body>
 </html>

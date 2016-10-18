@@ -5,7 +5,7 @@ const express = require('express'),
     compression = require('compression');
 
 console.log('connecting to MongoDB');
-var db_uri = process.env.MONGOLAB_URI || process.env.MONGODB_URI;
+var db_uri = process.env.MONGOLAB_URI || process.env.MONGODB_URI || 'localhost';
 mongoose.connect(db_uri);
 
 var app = express();
@@ -21,6 +21,6 @@ app.get('/', (req, res) => {
   res.render('home');
 });
 
-app.listen(process.env.PORT || 3000, => {
+app.listen(process.env.PORT || 3000, () => {
   console.log('ready to go');
 });
