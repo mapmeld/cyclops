@@ -4,6 +4,7 @@
   "description": "Toy programming language generator",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
     "test": "mocha"
   },
   "repository": {
