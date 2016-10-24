@@ -5,241 +5,248 @@ html
     meta(name="viewport", content="width=device-width, initial-scale=1")
     link(rel="stylesheet", type="text/css", href="styles/bootstrap.min.css")
     link(rel="stylesheet", type="text/css", href="styles/codemirror.css")
-    // <link rel="stylesheet" type="text/css" href="styles/linear.css"/>
+    link(rel="stylesheet", type="text/css", href="styles/linear.css")
   body
     .container
       .row
         .col-sm-12
           h1
-            span Cyclops Lang.org
+            span xWEBSITEx&nbsp;
             span.linear xHELPx
           br
           br
           p(style="font-size: 18px")
-            span Cyclops or&nbsp;
+            span xLANGNAMEx or&nbsp;
             span.linear 'xHELPx'
-            span &nbsp;is a programming language written in&nbsp;
-            a(href="https://en.wikipedia.org/wiki/Linear_A_(script)") Linear A
-            span , a forgotten/undeciphered script used 3500-4500 years ago on the Greek island of Minos.
-          p(style="font-size: 18px") If you want to get into serious retro-programming, travel through time while teaching computer science, or make your code incomprehensible, Cyclops is the right language for your project.
-          br
-          br
+            span.description is a programming language.
           br
 
       .row
         .col-sm-6
-          h4#codeheader Cyclops Code
-          textarea#interpreter.compare
-xHELPx
-> 'xLANGNAMEx xVERSIONx xWEBSITEx'
-
-Printing
-xPRINTx hello world
-> 'hello world'
-
-Math
-𐄓𐄊 𐄌
-> 𐄔
-
-Variables
-VARONE 𐄝
-xPRINTx VARONE xSUBTRACTx 𐄙
-> 𐄜
-
-Function
-xFUNCSTARTx FUNCONE
-&nbsp;&nbsp;xPARAMONEx xMULTIPLYx xPARAMONEx
-xFUNCENDx
-          button.hide.linear Run xFUNCSTARTx>
+          h4#codeheader xLANGNAMEx Code
+          textarea#interpreter.compare xHELPx\n> 'xLANGNAMEx xVERSIONx xWEBSITEx'\n\nPrinting\nxPRINTx hello world\n> 'hello world'\n\nMath\n44 6\n> 50\n\nVariables\n\nVARONE 50\nxPRINTx VARONE xSUBTRACTx 10\n> 40\n\nFunction\nxFUNCSTARTx FUNCONE\n&nbsp;&nbsp;xPARAMONEx xMULTIPLYx xPARAMONEx\nxFUNCENDx
+          button.hide.linear xFUNCSTARTx>
         .col-sm-6
           h4#sideheader Pseudocode
           code#consoler.plain.compare
-            help();
-            <br/><br/>
-            print('hello world');
-            <br/>
-            > 'hello world'
-            <br/><br/>
-            44 + 6
-            <br/>
-            > 50
-            <br/><br/>
-            var x = 500
-            <br/>
-            console.log(x - 100);
-            <br/>
-            > 400
+            span help();
+            br
+            br
+            span print('hello world');
+            br
+            span > 'hello world'
+            br
+            br
+            span 44 + 6
+            br
+            span > 50
+            br
+            br
+            span var x = 500
+            br
+            span console.log(x - 100);
+            br
+            span > 400
             br
             br
             function square(param1) {
             br
-            &nbsp;&nbsp;return param1 * param1;<br/>
-            }<br/>
+            span &nbsp;&nbsp;return param1 * param1;
+            br
+            span }
+            br
       .row
         .col-sm-12
-          h3 Types
-          p
-            span Commands are individual symbols in Linear A. Multiple characters can be the name of a variable or function.
-            span Uses&nbsp;
-            a(href="http://unicode.org/charts/PDF/U10600.pdf") Unicode
-            span &nbsp;codepoints for Linear A and&nbsp;
-            a(href="http://users.teilar.gr/~g1951d/") Aegean font
-            span &nbsp;by George Douros.
-          p
-            span Numbers are written in&nbsp;
-            a(href="https://en.wikipedia.org/wiki/Aegean_numerals") Aegean numerals
-            span .
-          p Any non-Minoan characters are interpreted as strings.
-
           h3 Guessing Game
-          p A guessing game written in Cyclops:
+          p
+            span A guessing game written in&nbsp;
+            span.linear xHELPx
+            span :
       .row
         .col-sm-6
           code.compare
             xHELPx
             br
-            xPRINTx I'm thinking of a number one to one hundred<br/>
-            VARTWO xRANDx
+            span xPRINTx I'm thinking of a number one to one hundred
             br
-            xLOOPx
+            span VARTWO xRANDx
             br
-            &nbsp;&nbsp;&nbsp;&nbsp;VARTHREE xINPUTx Guess a number:<br/>
+            span xLOOPx
             br
-            &nbsp;&nbsp;&nbsp;&nbsp;xSWITCHx VARTHREE<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xGREATERx VARTWO<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xPRINTx too high<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xLESSERx VARTWO<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xPRINTx too low<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xDUBEQUALx VARTWO<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xBREAKx<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;xSWITCHEDx<br/>
-            xLOOPx<br/>
-            xPRINTx you guessed correctly! you win!<br/>
+            span &nbsp;&nbsp;&nbsp;&nbsp;VARTHREE xINPUTx Guess a number:
+            br
+            span &nbsp;&nbsp;&nbsp;&nbsp;xSWITCHx VARTHREE
+            br
+            span &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xGREATERx VARTWO
+            br
+            span &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xPRINTx too high
+            br
+            span &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xLESSERx VARTWO
+            br
+            span &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xPRINTx too low
+            br
+            span &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xDUBEQUALx VARTWO
+            br
+            span &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xBREAKx
+            br
+            span &nbsp;&nbsp;&nbsp;&nbsp;xSWITCHEDx
+            br
+            span xLOOPx
+            br
+            span xPRINTx you guessed correctly! you win!
+            br
 
         .col-sm-6
           code.compare.plain
-            help();
+            span help();
             br
-            print("..a number 1-100");
+            span print("..a number 1-100");
             br
-            var x = random(1, 100);
+            span var x = random(1, 100);
             br
-            while(true) {
+            span while(true) {
             br
-            &nbsp;&nbsp;&nbsp;&nbsp;var y = input("Guess:");<br/>
-            <br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if y > x:<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("too high");<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if y < x:<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("too low");<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if y == x:<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br/>
-            <br/>
-            }<br/>
-            print("you guessed correctly! you win!")<br/>
+            span &nbsp;&nbsp;&nbsp;&nbsp;var y = input("Guess:");<br/>
+            br
+            span &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if y > x:
+            br
+            span &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("too high");
+            br
+            span &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if y < x:
+            br
+            span &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("too low");
+            br
+            span &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if y == x:
+            br
+            span &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;
+            br
+            br
+            br
+            span print("you guessed correctly! you win!")
+            br
       .row
         .col-sm-4
           h2 Installing
           .well
-            strong npm install cyclops-lang -g
+            strong npm install xNPMx -g
             br
-            strong cyclops game.cyc
+            strong xCLIx game.cyc
         .col-sm-4
           h3 Plz Help
           .well
-            span Can you decipher Linear A?
-            br
-            span Can we make a real sample of Linear A work as a compilable program?
-            br
-            span There are over 300 symbols in Linear A... what should the rest of our keywords be?
+            span.plzhelp How you can help.
         .col-sm-4
           h3 Open Source
           .well
-            a(href="https://github.com/mapmeld/cyclops")
+            a(href="xGITHUBLINKx")
               h4 Docs and Source
-            iframe(src="http://ghbtns.com/github-btn.html?user=mapmeld&amp;repo=cyclops&amp;type=watch&amp;count=true", allowtransparency="true", frameborder="0", scrolling="0", width="122", height="20")
       .row
         .col-sm-12
           h3 Commands
-          <li><span class="linear">xHELPx</span> = help</li>
-          <li><span class="linear">xPRINTx</span> = print</li>
-          <li><span class="linear">xINPUTx</span> = receive user input (command line or input())</li>
-          <li><span class="linear">xRANDx</span> = random number (1-100)</li>
-          <li><span class="linear">xLOOPx</span> = loop until flag is raised</li>
-          <li><span class="linear">xBREAKx</span> = raise flag (exit loop)</li>
-          <br/>
-          <!--
-          <h4>NodeJS I/O</h4>
-          <li><span class="linear">𐚮</span> = pipe in
-          <li><span class="linear">𐛄</span> = pipe out result of the line</li>
+          li
+            span.linear xHELPx
+            span &nbsp;= help
+          li
+            span.linear xPRINTx
+            span &nbsp;= print
+          li
+            span.linear xINPUTx
+            span &nbsp;receive user input (command line or input())
+          li
+            span.linear xRANDx
+            span &nbsp; = random number (1-100)
+          li
+            span.linear xLOOPx
+            span &nbsp;= loop until flag is raised
+          li
+            span.linear xBREAKx
+            span &nbsp;= raise flag (exit loop)
+          br
 
-          <h4>Storage</h4>
-          𐚯 local storage (persistent in browser session)
-          𐜮 universal storage (sets or retrieves value on Cyclops-lang universal web db)
-          -->
+          h3 Math
+          p Math is evaluated left-to-right, without order of operations. So 3 + 2 * 4 == 20 not 11. It might be easier to do one math operation at a time.
+          li
+            span.linear xADDx
+            span &nbsp;= add
+          li
+            span addition done by placing numbers on same line (
+            span.linear 24 6
+            span ) returns the sum.
+          li
+            span.linear xSUBTRACTx
+            span &nbsp;= subtract
+          li
+            span.linear xDIVIDEx
+            span &nbsp;= divide
+          li
+            span.linear xMULTIPLYx
+            span &nbsp;= multiply
 
-          <h3>Math</h3>
-          <p>Math is evaluated left-to-right, without order of operations. So 3 + 2 * 4 == 20 not 11. It might be easier to do one math operation at a time.</p>
-          <li>addition done by placing numbers on same line (<span class="linear">𐄓𐄊 𐄌</span> returns the sum <span class="linear">𐄔</span>)</li>
-          <li><span class="linear">xSUBTRACTx</span> = subtract</li>
-          <li><span class="linear">xDIVIDEx</span> = divide</li>
-          <li><span class="linear">xMULTIPLYx</span> = multiply</li>
-
-          <h3>Conditional</h3>
-          <li><span class="linear">xSWITCHx</span> = conditional switch</li>
-          <li><span class="linear">xSWITCHEDx</span> = end conditional</li>
-          <li><span class="linear">xDUBEQUALx</span> = equality (===)</li>
-          <li><span class="linear">xGREATERx</span> = greater-than
-          <li><span class="linear">xLESSERx</span> = less-than
-          <p>Conditionals if value of variable <span class="linear">VARONE</span> is greater than, less than, or equal to 5</p>
-          <code>
-            xSWITCHx VARONE
-            <br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;xGREATERx 𐄉
-            <br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xPRINTx greater than 3
-            <br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;xGREATERx 𐄋
-            <br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xPRINTx greater than 5, too
-            <br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;xLESSERx 𐄋
-            <br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xPRINTx less than 5
-            <br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;xDUBEQUALx 𐄋
-            <br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xPRINTx equal to 5
-            <br/>
-            xSWITCHEDx
-          </code>
-        </div>
-      </div>
+          h3 Conditional
+          li
+            span.linear xSWITCHx
+            span &nbsp;= conditional switch</li>
+          li
+            span.linear xSWITCHEDx
+            span &nbsp;= end conditional</li>
+          li
+            span.linear xDUBEQUALx
+            span &nbsp;= equality (==)</li>
+          li
+            span.linear xGREATERx
+            span &nbsp;= greater-than
+          li
+            span.linear xLESSERx
+            span &nbsp;= less-than
+          p
+            span Conditionals if value of variable&nbsp;
+            span.linear VARONE
+            span &nbsp;is greater than, less than, or equal to 5
+          code
+            span xSWITCHx VARONE
+            br
+            span &nbsp;&nbsp;&nbsp;&nbsp;xGREATERx 3
+            br
+            span &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xPRINTx greater than 3
+            br
+            span &nbsp;&nbsp;&nbsp;&nbsp;xGREATERx 5
+            br
+            span &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xPRINTx greater than 5, too
+            br
+            span &nbsp;&nbsp;&nbsp;&nbsp;xLESSERx 5
+            br
+            span &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xPRINTx less than 5
+            br
+            span &nbsp;&nbsp;&nbsp;&nbsp;xDUBEQUALx 5
+            br
+            span &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xPRINTx equal to 5
+            br
+            span xSWITCHEDx
       .row
         .col-sm-12
           h3 Functions
-          p Declare a function with this character <span class="linear">xFUNCSTARTx</span> that looks like an archer.
+          p Declare a function with this keyword: <span class="linear">xFUNCSTARTx</span>
             <br/>Inside the function, <span class="linear">xPARAMONEx</span> will represent the first parameter passed into the function,
             followed by <span class="linear">xPARAMTWOx, xPARAMTHREEx, xPARAMFOURx</span>, and <span class="linear">xPARAMFIVEx</span>
           p
             span Write the squaring function <i>f(x) = x * x</i>. Let's name the function <span class="linear">FUNCONE</span>.
           code
-            xFUNCSTARTx FUNCONE
+            span xFUNCSTARTx FUNCONE
             br
-            &nbsp;&nbsp;&nbsp;&nbsp;xPARAMONEx xMULTIPLYx xPARAMONEx
+            span &nbsp;&nbsp;&nbsp;&nbsp;xPARAMONEx xMULTIPLYx xPARAMONEx
             br
-            xFUNCENDx
+            span xFUNCENDx
           p Now call the function:
           code
-            FUNCONE 𐄊
-            <br/>
-            > 𐄐𐄌
+            span FUNCONE 4
+            br
+            span > 16
     br
     br
     br
     // <script src="/scripts/aegean-numbers.js"></script>
-    <script src="/cyclops.js"></script>
-    <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
-    <script src="/scripts/codemirror.js"></script>
-    <script src="/scripts/javascript.js"></script>
-    <script src="/scripts/interpreter.js"></script>
+    script(src="/scripts/cyclops.js")
+    script(src="//code.jquery.com/jquery-1.12.0.min.js")
+    script(src="/scripts/codemirror.js")
+    script(src="/scripts/javascript.js")
+    script(src="/scripts/interpreter.js")

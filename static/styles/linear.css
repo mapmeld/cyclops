@@ -1,14 +1,9 @@
-@font-face {
-  font-family: 'Aegean35';
-  src: url(Aegean.ttf);
-}
-
 html, body {
   font-family: sans-serif;
 }
 
 code, .linear, .CodeMirror {
-  font-family: monospace, 'Aegean35', sans-serif;
+  font-family: monospace, sans-serif;
 }
 
 .linear {

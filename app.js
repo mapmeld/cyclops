@@ -14,11 +14,12 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express['static'](__dirname + '/static'));
 app.use(compression());
 app.use(cookieParser());
 
 app.get('/', (req, res) => {
-  res.render('home');
+  res.render('explainer');
 });
 
 app.listen(process.env.PORT || 3000, () => {
