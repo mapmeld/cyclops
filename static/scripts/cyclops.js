@@ -6,7 +6,7 @@ var numberConversion = function (raw) {
   return raw;
 };
 
-function cyclops(srccode, callback, logme) {
+function cyclops(srccode, langname, cmds, callback, logme) {
   if (!logme) {
     logme = console.log;
   }
@@ -15,8 +15,13 @@ function cyclops(srccode, callback, logme) {
   };
   var keys = ['xLOOPx', 'xSWITCHx', 'xSWITCHEDx', 'xSUBTRACTx', 'xDIVIDEx', 'xMULTIPLYx',
              'xBREAKx', 'xFUNCENDx', 'xFUNCSTARTx', 'xPARAMONEx', 'xPARAMTWOx', 'xPARAMTHREEx',
-             'xPARAMFOURx', 'xPARAMFIVEx', 'xPRINTx', 'xINPUTx', 'xHELPx', 'xLANGNAMEx', 'xVERSIONx',
-             'xWEBSITEx', 'xRANDx', 'xGREATERx', 'xLESSERx', 'xDUBEQUALx', 'xADDx', 'xSTOREx'];
+             'xPARAMFOURx', 'xPARAMFIVEx', 'xPRINTx', 'xINPUTx', 'xHELPx',
+             'xRANDx', 'xGREATERx', 'xLESSERx', 'xDUBEQUALx', 'xADDx', 'xSTOREx'];
+  for (var k = 0; k < keys.length; k++) {
+    if (cmds[keys[k]]) {
+      keys[k] = cmds[keys[k]];
+    }
+  }
 
   var lines = srccode.trim().split(/\r\n|\n/);
 
@@ -86,22 +91,22 @@ function cyclops(srccode, callback, logme) {
       }
 
       if (inFunction) {
-        if (part === 'xFUNCENDx') {
+        if (part === cmds.xFUNCENDx) {
           return response;
         }
-        if (part === 'xPARAMONEx') {
+        if (part === cmds.xPARAMONEx) {
           part = params[0];
         }
-        if (part === 'xPARAMTWOx') {
+        if (part === cmds.xPARAMTWOx) {
           part = params[1];
         }
-        if (part === 'xPARAMTHREEx') {
+        if (part === cmds.xPARAMTHREEx) {
           part = params[2];
         }
-        if (part === 'xPARAMFOURx') {
+        if (part === cmds.xPARAMFOURx) {
           part = params[3];
         }
-        if (part === 'xPARAMFIVEx') {
+        if (part === cmds.xPARAMFIVEx) {
           part = params[4];
         }
       }
@@ -111,27 +116,27 @@ function cyclops(srccode, callback, logme) {
         return parseCode(initialVal * 1 + part * 1, parts.slice(1));
       } else if (keys.indexOf(part) > -1) {
         // help command
-        if (part === 'xHELPx') {
-          var printed = 'xLANGNAMEx xVERSIONx xWEBSITEx';
+        if (part === cmds.xHELPx) {
+          var printed = langname + ' 1.0.0';
           logger(printed);
           return printed;
         }
 
         // print command
-        else if (part === 'xPRINTx') {
+        else if (part === cmds.xPRINTx) {
           var printed = parseCode('', parts.slice(1));
           logger(printed);
           return printed;
         }
 
         // input command
-        else if (part === 'xINPUTx') {
+        else if (part === cmds.xINPUTx) {
           var promptStr = parseCode('', parts.slice(1));
           return numberConversion(prompt(promptStr), true);
         }
 
         // loop start or end
-        else if (part === 'xLOOPx') {
+        else if (part === cmds.xLOOPx) {
           if (loops.length) {
             i = loops[0];
             return 1;
@@ -142,7 +147,7 @@ function cyclops(srccode, callback, logme) {
         }
 
         // addition operator
-        else if (part === 'xADDx') {
+        else if (part === cmds.xADDx) {
           var adder = parseCode(0, parts.slice(1));
           if (isNaN(adder * 1)) {
             throw 'No number to add on line ' + (i + 1);
@@ -151,7 +156,7 @@ function cyclops(srccode, callback, logme) {
         }
 
         // subtraction operator
-        else if (part === 'xSUBTRACTx') {
+        else if (part === cmds.xSUBTRACTx) {
           var subtractor = parseCode(0, parts.slice(1));
           if (isNaN(subtractor * 1)) {
             throw 'No number to subtract on line ' + (i + 1);
@@ -160,7 +165,7 @@ function cyclops(srccode, callback, logme) {
         }
 
         // multiplication operator
-        else if (part === 'xMULTIPLYx') {
+        else if (part === cmds.xMULTIPLYx) {
           var multiplier = parseCode(0, parts.slice(1));
           if (isNaN(multiplier * 1)) {
             throw 'No number to multiply on line ' + (i + 1);
@@ -168,13 +173,13 @@ function cyclops(srccode, callback, logme) {
           return initialVal * multiplier;
         }
 
-        else if (part === 'xSTOREx') {
+        else if (part === cmds.xSTOREx) {
           var value = parseCode(0, parts.slice(1));
           return value;
         }
 
         // division operator
-        else if (part === 'xDIVIDEx') {
+        else if (part === cmds.xDIVIDEx) {
           var divisor = parseCode(0, parts.slice(1));
           if (isNaN(divisor * 1)) {
             throw 'No number to divide on line ' + (i + 1);
@@ -183,18 +188,18 @@ function cyclops(srccode, callback, logme) {
         }
 
         // random number function
-        else if (part === 'xRANDx') {
+        else if (part === cmds.xRANDx) {
           return Math.ceil(Math.random() * 100);
         }
 
         // conditional
-        else if (part === 'xSWITCHx') {
+        else if (part === cmds.xSWITCHx) {
           var conditionalVal = parseCode(0, parts.slice(1));
           conditionals.push(conditionalVal);
         }
 
         // end conditional
-        else if (part === 'xSWITCHEDx') {
+        else if (part === cmds.xSWITCHEDx) {
           if (!conditionals.length) {
             throw 'too many end-if marks';
           }
@@ -202,30 +207,30 @@ function cyclops(srccode, callback, logme) {
         }
 
         // greater than, less than, equal to
-        else if (['xGREATERx', 'xLESSERx', 'xDUBEQUALx'].indexOf(part) > -1) {
+        else if ([cmds.xGREATERx, cmds.xLESSERx, cmds.xDUBEQUALx].indexOf(part) > -1) {
           if (!conditionals.length) {
             throw 'comparison without conditional';
           }
           var compareVal = parseCode(0, parts.slice(1));
           var conditionalVal = conditionals[conditionals.length - 1];
           var correct;
-          if (part === 'xGREATERx') {
+          if (part === cmds.xGREATERx) {
             correct = conditionalVal > compareVal;
           }
-          if (part === 'xLESSERx') {
+          if (part === cmds.xLESSERx) {
             correct = conditionalVal < compareVal;
           }
-          if (part === 'xDUBEQUALx') {
+          if (part === cmds.xDUBEQUALx) {
             correct = (conditionalVal == compareVal);
           }
           if (!correct) {
             /* skip to next interesting conditional */
             i++;
             while (i < lines.length
-              && lines[i].indexOf('xGREATERx') === -1
-              && lines[i].indexOf('xLESSERx') === -1
-              && lines[i].indexOf('xDUBEQUALx') === -1
-              && lines[i].indexOf('xSWITCHEDx') === -1) {
+              && lines[i].indexOf(cmds.xGREATERx) === -1
+              && lines[i].indexOf(cmds.xLESSERx) === -1
+              && lines[i].indexOf(cmds.xDUBEQUALx) === -1
+              && lines[i].indexOf(cmds.xSWITCHEDx) === -1) {
               i++;
             }
             i--;
@@ -234,11 +239,11 @@ function cyclops(srccode, callback, logme) {
         }
 
         // break loop flag
-        else if (part === 'xBREAKx') {
+        else if (part === cmds.xBREAKx) {
           if (!loops.length) {
             throw 'break loop flag without loop';
           }
-          while (i < lines.length && lines[i].indexOf('xLOOPx') === -1) {
+          while (i < lines.length && lines[i].indexOf(cmds.xLOOPx) === -1) {
             i++;
           }
           loops.pop();
@@ -246,7 +251,7 @@ function cyclops(srccode, callback, logme) {
         }
 
         // start function
-        else if (part === 'xFUNCSTARTx') {
+        else if (part === cmds.xFUNCSTARTx) {
           if (parts.length <= 1) {
             throw 'function did not have valid name';
           }
@@ -254,7 +259,7 @@ function cyclops(srccode, callback, logme) {
           if (!glofunc[myname]) {
             // declare function
             var start = i;
-            while (i < lines.length && lines[i].indexOf('xFUNCENDx') === -1) {
+            while (i < lines.length && lines[i].indexOf(cmds.xFUNCENDx) === -1) {
               i++;
             }
             glofunc[myname] = [start, i];
@@ -316,55 +321,35 @@ function cyclops(srccode, callback, logme) {
 }
 
 /* polyfills */
-/*! http://mths.be/codepointat v0.1.0 by @mathias */
-if (!String.prototype.codePointAt) {
-  (function() {
-    'use strict'; // needed to support `apply`/`call` with `undefined`/`null`
-    var codePointAt = function(position) {
-      if (this == null) {
-        throw TypeError();
-      }
-      var string = String(this);
-      var size = string.length;
-      // `ToInteger`
-      var index = position ? Number(position) : 0;
-      if (index != index) { // better `isNaN`
-        index = 0;
-      }
-      // Account for out-of-bounds indices:
-      if (index < 0 || index >= size) {
-        return undefined;
-      }
-      // Get the first code unit
-      var first = string.charCodeAt(index);
-      var second;
-      if ( // check if it’s the start of a surrogate pair
-        first >= 0xD800 && first <= 0xDBFF && // high surrogate
-        size > index + 1 // there is a next code unit
-      ) {
-        second = string.charCodeAt(index + 1);
-        if (second >= 0xDC00 && second <= 0xDFFF) { // low surrogate
-          // http://mathiasbynens.be/notes/javascript-encoding#surrogate-formulae
-          return (first - 0xD800) * 0x400 + second - 0xDC00 + 0x10000;
-        }
-      }
-      return first;
-    };
-    if (Object.defineProperty) {
-      Object.defineProperty(String.prototype, 'codePointAt', {
-        'value': codePointAt,
-        'configurable': true,
-        'writable': true
-      });
-    } else {
-      String.prototype.codePointAt = codePointAt;
-    }
-  }());
-}
-
 if (!String.prototype.trim) {
   String.prototype.trim = function () {
     return this.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '');
+  };
+}
+
+if (!Array.prototype.indexOf) {
+  Array.prototype.indexOf = function(searchElement, fromIndex) {
+    var k;
+    if (this == null) {
+      throw new TypeError('"this" is null or not defined');
+    }
+    var o = Object(this);
+    var len = o.length >>> 0;
+    if (len === 0) {
+      return -1;
+    }
+    var n = fromIndex | 0;
+    if (n >= len) {
+      return -1;
+    }
+    k = Math.max(n >= 0 ? n : len - Math.abs(n), 0);
+    while (k < len) {
+      if (k in o && o[k] === searchElement) {
+        return k;
+      }
+      k++;
+    }
+    return -1;
   };
 }
 

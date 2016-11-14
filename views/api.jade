@@ -1,0 +1,263 @@
+doctype
+html
+  head
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    title Language Spec for #{lang.name}
+    link(rel="stylesheet", type="text/css", href="/styles/bootstrap.min.css")
+    link(rel="stylesheet", type="text/css", href="/styles/codemirror.css")
+    link(rel="stylesheet", type="text/css", href="/styles/linear.css")
+  body
+    .container
+      .row
+        .col-sm-12
+          h1.linear= lang.name
+          br
+          br
+          p(style="font-size: 18px") is a programming language.
+          br
+
+      .row
+        .col-sm-6
+          h4#codeheader #{lang.name} Code
+          textarea#interpreter.compare xHELPx\n> '#{lang.name} #{lang.version} http://cyclopslang.org/#{lang._id}'\n\nPrinting\n#{lang.cmd.xPRINTx} hello world\n> 'hello world'\n\nMath\n44 #{lang.cmd.xADDx} 6\n> 50\n\nVariables\n\nVARONE #{lang.cmd.xSTOREx} 50\n#{lang.cmd.xPRINTx} VARONE #{lang.cmd.xSUBTRACTx} 10\n> 40\n\nFunction\n#{lang.cmd.xFUNCSTARTx} FUNCONE\n&nbsp;&nbsp;#{lang.cmd.xPARAMONEx} #{lang.cmd.xMULTIPLYx} #{lang.cmd.xPARAMONEx}\n#{lang.cmd.xFUNCENDx}
+          button.hide.linear #{lang.cmd.xFUNCSTARTx}>
+        .col-sm-6
+          h4#sideheader Pseudocode
+          code#consoler.plain.compare
+            span help();
+            br
+            br
+            span print('hello world');
+            br
+            span > 'hello world'
+            br
+            br
+            span 44 + 6
+            br
+            span > 50
+            br
+            br
+            span var x = 500
+            br
+            span console.log(x - 100);
+            br
+            span > 400
+            br
+            br
+            function square(param1) {
+            br
+            span &nbsp;&nbsp;return param1 * param1;
+            br
+            span }
+            br
+      .row
+        .col-sm-12
+          h3 Guessing Game
+          p
+            span A guessing game written in&nbsp;
+            span.linear= lang.name
+            span :
+      .row
+        .col-sm-6
+          code.compare
+            span= lang.cmd.xHELPx
+            br
+            span #{lang.cmd.xPRINTx} I'm thinking of a number one to one hundred
+            br
+            span VARTWO #{lang.cmd.xRANDx}
+            br
+            span= lang.cmd.xLOOPx
+            br
+            span &nbsp;&nbsp;&nbsp;&nbsp;VARTHREE #{lang.cmd.xINPUTx} Guess a number:
+            br
+            span &nbsp;&nbsp;&nbsp;&nbsp;#{lang.cmd.xSWITCHx} VARTHREE
+            br
+            span &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#{lang.cmd.xGREATERx} VARTWO
+            br
+            span &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#{lang.cmd.xPRINTx} too high
+            br
+            span &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#{lang.cmd.xLESSERx} VARTWO
+            br
+            span &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#{lang.cmd.xPRINTx} too low
+            br
+            span &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#{lang.cmd.xDUBEQUALx} VARTWO
+            br
+            span &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#{lang.cmd.xBREAKx}
+            br
+            span &nbsp;&nbsp;&nbsp;&nbsp;#{lang.cmd.xSWITCHEDx}
+            br
+            span= lang.cmd.xLOOPx
+            br
+            span #{lang.cmd.xPRINTx} you guessed correctly! you win!
+            br
+
+        .col-sm-6
+          code.compare.plain
+            span help();
+            br
+            span print("..a number 1-100");
+            br
+            span var x = random(1, 100);
+            br
+            span while(true) {
+            br
+            span &nbsp;&nbsp;&nbsp;&nbsp;var y = input("Guess:");<br/>
+            br
+            span &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if y > x:
+            br
+            span &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("too high");
+            br
+            span &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if y < x:
+            br
+            span &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("too low");
+            br
+            span &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if y == x:
+            br
+            span &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;
+            br
+            br
+            br
+            span print("you guessed correctly! you win!")
+            br
+      .row
+        .col-sm-4
+          h2 Installing
+          .well
+            strong npm install xNPMx -g
+            br
+            strong xCLIx game.cyc
+        .col-sm-4
+          h3 Plz Help
+          .well
+            span.plzhelp How you can help.
+        .col-sm-4
+          h3 Open Source
+          .well
+            a(href="xGITHUBLINKx")
+              h4 Docs and Source
+      .row
+        .col-sm-12
+          h3 Commands
+          li
+            span.linear= lang.cmd.xHELPx
+            span &nbsp;= help
+          li
+            span.linear= lang.cmd.xPRINTx
+            span &nbsp;= print
+          li
+            span.linear= lang.cmd.xINPUTx
+            span &nbsp;receive user input (command line or input())
+          li
+            span.linear= lang.cmd.xRANDx
+            span &nbsp; = random number (1-100)
+          li
+            span.linear= lang.cmd.xLOOPx
+            span &nbsp;= loop until flag is raised
+          li
+            span.linear= lang.cmd.xBREAKx
+            span &nbsp;= raise flag (exit loop)
+          br
+
+          h3 Math
+          p Math is evaluated left-to-right, without order of operations. So 3 + 2 * 4 == 20 not 11. It might be easier to do one math operation at a time.
+          li
+            span.linear= lang.cmd.xADDx
+            span &nbsp;= add
+          li
+            span addition done by placing numbers on same line (
+            span.linear 24 6
+            span ) returns the sum.
+          li
+            span.linear= lang.cmd.xSUBTRACTx
+            span &nbsp;= subtract
+          li
+            span.linear= lang.cmd.xDIVIDEx
+            span &nbsp;= divide
+          li
+            span.linear= lang.cmd.xMULTIPLYx
+            span &nbsp;= multiply
+
+          h3 Conditional
+          li
+            span.linear= lang.cmd.xSWITCHx
+            span &nbsp;= conditional switch</li>
+          li
+            span.linear= lang.cmd.xSWITCHEDx
+            span &nbsp;= end conditional</li>
+          li
+            span.linear= lang.cmd.xDUBEQUALx
+            span &nbsp;= equality (==)</li>
+          li
+            span.linear= lang.cmd.xGREATERx
+            span &nbsp;= greater-than
+          li
+            span.linear= lang.cmd.xLESSERx
+            span &nbsp;= less-than
+          p
+            span Conditionals if value of variable&nbsp;
+            span.linear VARONE
+            span &nbsp;is greater than, less than, or equal to 5
+          code
+            span #{lang.cmd.xSWITCHx} VARONE
+            br
+            span &nbsp;&nbsp;&nbsp;&nbsp;#{lang.cmd.xGREATERx} 3
+            br
+            span &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#{lang.cmd.xPRINTx} greater than 3
+            br
+            span &nbsp;&nbsp;&nbsp;&nbsp;#{lang.cmd.xGREATERx} 5
+            br
+            span &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#{lang.cmd.xPRINTx} greater than 5, too
+            br
+            span &nbsp;&nbsp;&nbsp;&nbsp;#{lang.cmd.xLESSERx} 5
+            br
+            span &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#{lang.cmd.xPRINTx} less than 5
+            br
+            span &nbsp;&nbsp;&nbsp;&nbsp;#{lang.cmd.xDUBEQUALx} 5
+            br
+            span &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#{lang.cmd.xPRINTx} equal to 5
+            br
+            span= lang.cmd.xSWITCHEDx
+      .row
+        .col-sm-12
+          h3 Functions
+          p
+            span Declare a function with this keyword:&nbsp;
+            span.linear= lang.cmd.xFUNCSTARTx
+            br
+            span Inside the function,&nbsp;
+            span.linear= lang.cmd.xPARAMONEx
+            span &nbsp;represents the first parameter passed into the function, followed by&nbsp;
+            span.linear= lang.cmd.xPARAMTWOx
+            span , 
+            span.linear= lang.cmd.xPARAMTHREEx
+            span ,
+            span.linear= lang.cmd.xPARAMFOURx
+            span , and 
+            span.linear= lang.cmd.xPARAMFIVEx
+          p
+            span Write the squaring function&nbsp;
+            i if(x) = x * x
+            span . Let's name the function&nbsp;
+            span.linear FUNCONE
+          code
+            span #{lang.cmd.xFUNCSTARTx} FUNCONE
+            br
+            span &nbsp;&nbsp;&nbsp;&nbsp;#{lang.cmd.xPARAMONEx} #{lang.cmd.xMULTIPLYx} #{lang.cmd.xPARAMONEx}
+            br
+            span= lang.cmd.xFUNCENDx
+          p Now call the function:
+          code
+            span FUNCONE 4
+            br
+            span > 16
+    br
+    br
+    br
+    // <script src="/scripts/aegean-numbers.js"></script>
+    script(src="/scripts/cyclops.js")
+    script(src="//code.jquery.com/jquery-1.12.0.min.js")
+    script(src="/scripts/codemirror.js")
+    script(src="/scripts/javascript.js")
+    script(src="/scripts/interpreter.js")
+    script runint(!{JSON.stringify(lang.name)}, !{JSON.stringify(lang.cmd)});
