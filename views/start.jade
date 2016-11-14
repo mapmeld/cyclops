@@ -34,16 +34,19 @@ html
                 .form-group
                   label Multiply
                   input.form-control(name="xMULTIPLYx", value="", placeholder="")
+                .form-group
+                  label Variable store
+                  input.form-control(name="xSTOREx", value="", placeholder="")
               .clearfix
             .well
               h4 Commands
               .col-sm-6
                 .form-group
                   label Language name
-                  input.form-control(name="xLANGNAMEx", value="", placeholder="")
+                  input.form-control(name="xLANGNAMEx", value=name, placeholder="")
                 .form-group
                   label Help command
-                  input.form-control(name="xHELPx", value="", placeholder="")
+                  input.form-control(name="xHELPx", value=name, placeholder="")
                 .form-group
                   label Print
                   input.form-control(name="xPRINTx", value="", placeholder="")
@@ -61,4 +64,54 @@ html
                   label Break out of the loop
                   input.form-control(name="xBREAKx", value="", placeholder="")
               .clearfix
-            input.btn.btn-primary(type="submit", value="Create the Language")
+            .well
+              h4 Conditional
+              .col-sm-6
+                .form-group
+                  label Switch (conditional statement)
+                  input.form-control(name="xSWITCHx", value="", placeholder="")
+                .form-group
+                  label End switch / conditional statement
+                  input.form-control(name="xSWITCHEDx", value="", placeholder="")
+              .col-sm-6
+                .form-group
+                  label Compare two figures (A is equal to B)
+                  input.form-control(name="xDUBEQUALx", value="", placeholder="equal to")
+                .form-group
+                  label Compare two figures (A is greater than B)
+                  input.form-control(name="xGREATERx", value="", placeholder="greater than")
+                .form-group
+                  label Compare two figures (A is lesser than B)
+                  input.form-control(name="xLESSERx", value="", placeholder="less than")
+              .clearfix
+            .well
+              h4 Functions and parameters
+              .col-sm-6
+                .form-group
+                  label Function start
+                  input.form-control(name="xFUNCSTARTx", value="", placeholder="")
+                .form-group
+                  label Function end
+                  input.form-control(name="xFUNCENDx", value="", placeholder="")
+              .col-sm-6
+                .form-group
+                  label Parameter one
+                  input.form-control(name="xPARAMONEx", value="", placeholder="")
+                .form-group
+                  label Parameter two
+                  input.form-control(name="xPARAMTWOx", value="", placeholder="")
+                .form-group
+                  label Parameter three
+                  input.form-control(name="xPARAMTHREEx", value="", placeholder="")
+                .form-group
+                  label Parameter four
+                  input.form-control(name="xPARAMFOURx", value="", placeholder="")
+                .form-group
+                  label Parameter five
+                  input.form-control(name="xPARAMFIVEx", value="", placeholder="")
+              .clearfix
+            br
+            .well
+              input.btn.btn-primary(type="submit", value="Create the Language")
+            br
+            br
