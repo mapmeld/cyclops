@@ -7,6 +7,8 @@ const languageSchema = mongoose.Schema({
   version: String,
   digits: String,
   rtl: Boolean,
+  created: Date,
+  updated: Date,
   cmd: {
     xHELPx: String,
     xLOOPx: String,

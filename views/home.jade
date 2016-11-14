@@ -16,10 +16,14 @@ html
           h3 Languages
           p List of recently produced languages:
           ul
-            li
-              a(href="/api") Reference
-            li
-              a(href="/api/cyclops") Minoan
+            for lang in recentLanguages
+              li
+                a(href="/api/#{lang.name}")
+                  span.capital #{lang.name}
+                  if lang.author
+                    span &nbsp;by #{lang.author}
+                  if lang.humanlanguage
+                    span &nbsp;based on #{lang.humanlanguage}
         .col-sm-4
           h3 Making More
           p We want to cover many more languages!
