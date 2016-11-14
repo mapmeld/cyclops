@@ -78,7 +78,7 @@ app.post('/make', csrfProtection, (req, res) => {
       if (err) {
         return res.json(err);
       }
-      res.redirect('/api/' + l._id);
+      res.redirect('/api/' + languageName);
     });
   });
 });
