@@ -32,9 +32,18 @@ app.get('/', csrfProtection, (req, res) => {
 });
 
 app.get('/start', csrfProtection, (req, res) => {
-  res.render('start', {
-    name: req.query.name,
-    csrfToken: req.csrfToken()
+  var languageName = req.query.name;
+  Language.findOne({ name: languageName }, (err, match) => {
+    if (err) {
+      return res.json(err);
+    }
+    if (match) {
+      return res.json({ error: 'language with this name alredy exists' });
+    }
+    res.render('start', {
+      name: languageName,
+      csrfToken: req.csrfToken()
+    });
   });
 });
 

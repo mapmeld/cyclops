@@ -1,0 +1,17 @@
+@font-face {
+  font-family: 'Aegean35';
+  src: url(/fonts/Aegean.ttf);
+}
+
+.aegean {
+  font-family: 'Aegean35';
+}
+
+.jumbotron {
+  background-color: skyblue;
+  border-radius: 0 !important;
+}
+
+ul li {
+  margin-bottom: 12px;
+}

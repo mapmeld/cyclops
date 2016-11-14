@@ -5,12 +5,15 @@ html
     meta(name="viewport", content="width=device-width, initial-scale=1")
     title Cyclops Lang Generator
     link(rel="stylesheet", href="/styles/bootstrap.min.css")
+    link(rel="stylesheet", href="/styles/homepage.css")
   body
     .container
       .row
         .col-sm-12
           .jumbotron
-            h2 Cyclops Language Generator
+            h2
+              span.aegean 𐙀&nbsp;&nbsp;
+              span Cyclops Language Generator
             h3 Code computers in any human language 
       .row
         .col-sm-4
@@ -28,9 +31,10 @@ html
         .col-sm-4
           h3 Making More
           p We want to cover many more languages!
-          p You can make a programming language in your native language, or set up a bounty for a new language.
+          p You can make a programming language in your native language, or (coming soon) set up a bounty for a new language.
         .col-sm-4
           h3 Make Your Own
+          p There are only 23 keywords needed to make a new language:
           form.form(action="/start", method="GET")
             .form-group
               input.form-control(name="name", value="", placeholder="Language name", required)
