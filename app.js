@@ -3,11 +3,14 @@ const express = require('express'),
     bodyParser = require('body-parser'),
     cookieParser = require('cookie-parser'),
     compression = require('compression'),
+    csrf = require('csurf'),
     Language = require('./models/language');
 
 console.log('connecting to MongoDB');
 var db_uri = process.env.MONGOLAB_URI || process.env.MONGODB_URI || 'localhost';
 mongoose.connect(db_uri);
+
+const csrfProtection = csrf({ cookie: true });
 
 var app = express();
 
@@ -19,18 +22,20 @@ app.use(express['static'](__dirname + '/static'));
 app.use(compression());
 app.use(cookieParser());
 
-app.get('/', (req, res) => {
-  res.render('home');
-});
-
-app.get('/start', (req, res) => {
-  res.render('start', {
-    name: req.query.name
+app.get('/', csrfProtection, (req, res) => {
+  res.render('home', {
+    csrfToken: req.csrfToken()
   });
 });
 
-app.post('/make', (req, res) => {
-  console.log(req.body.rtl);
+app.get('/start', csrfProtection, (req, res) => {
+  res.render('start', {
+    name: req.query.name,
+    csrfToken: req.csrfToken()
+  });
+});
+
+app.post('/make', csrfProtection, (req, res) => {
   var l = new Language({
     name: req.body.language_name,
     humanlanguage: req.body.human_language,
@@ -64,11 +69,7 @@ app.post('/make', (req, res) => {
   });
 });
 
-app.get('/api', (req, res) => {
-  res.render('explainer');
-});
-
-app.get('/api/:lang_id', (req, res) => {
+app.get('/api/:lang_id', csrfProtection, (req, res) => {
   Language.findById(req.params.lang_id, (err, lang) => {
     if (err) {
       return res.json(err);
@@ -77,7 +78,8 @@ app.get('/api/:lang_id', (req, res) => {
       return res.json({ error: 'no such language' });
     }
     res.render('api', {
-      lang: lang
+      lang: lang,
+      csrfToken: req.csrfToken()
     });
   });
 });
