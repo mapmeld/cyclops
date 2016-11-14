@@ -16,7 +16,7 @@ function cyclops(srccode, callback, logme) {
   var keys = ['xLOOPx', 'xSWITCHx', 'xSWITCHEDx', 'xSUBTRACTx', 'xDIVIDEx', 'xMULTIPLYx',
              'xBREAKx', 'xFUNCENDx', 'xFUNCSTARTx', 'xPARAMONEx', 'xPARAMTWOx', 'xPARAMTHREEx',
              'xPARAMFOURx', 'xPARAMFIVEx', 'xPRINTx', 'xINPUTx', 'xHELPx', 'xLANGNAMEx', 'xVERSIONx',
-             'xWEBSITEx', 'xRANDx', 'xGREATERx', 'xLESSERx', 'xDUBEQUALx', 'xADDx'];
+             'xWEBSITEx', 'xRANDx', 'xGREATERx', 'xLESSERx', 'xDUBEQUALx', 'xADDx', 'xSTOREx'];
 
   var lines = srccode.trim().split(/\r\n|\n/);
 
@@ -166,6 +166,11 @@ function cyclops(srccode, callback, logme) {
             throw 'No number to multiply on line ' + (i + 1);
           }
           return initialVal * multiplier;
+        }
+
+        else if (part === 'xSTOREx') {
+          var value = parseCode(0, parts.slice(1));
+          return value;
         }
 
         // division operator

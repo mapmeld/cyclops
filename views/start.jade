@@ -1,0 +1,64 @@
+doctype
+html
+  head
+    meta(charset="utf-8")
+    title Cyclops Lang Generator
+    link(rel="stylesheet", href="/styles/bootstrap.min.css")
+  body
+    .container
+      .row
+        .col-sm-12
+          .jumbotron
+            h2 Cyclops Language Generator
+            h3 Code computers in any human language 
+      .row
+        .col-sm-12
+          h3 Creating language #{name}
+      .row
+        .col-sm-12
+          form.form(action="/make", method="POST")
+            input(type="hidden", name="_csrf", value="")
+            .well
+              h4 Math
+              .col-sm-6
+                .form-group
+                  label Add
+                  input.form-control(name="xADDx", value="", placeholder="")
+                .form-group
+                  label Subtract
+                  input.form-control(name="xSUBTRACTx", value="", placeholder="")
+              .col-sm-6
+                .form-group
+                  label Divide
+                  input.form-control(name="xDIVIDEx", value="", placeholder="")
+                .form-group
+                  label Multiply
+                  input.form-control(name="xMULTIPLYx", value="", placeholder="")
+              .clearfix
+            .well
+              h4 Commands
+              .col-sm-6
+                .form-group
+                  label Language name
+                  input.form-control(name="xLANGNAMEx", value="", placeholder="")
+                .form-group
+                  label Help command
+                  input.form-control(name="xHELPx", value="", placeholder="")
+                .form-group
+                  label Print
+                  input.form-control(name="xPRINTx", value="", placeholder="")
+                .form-group
+                  label Input
+                  input.form-control(name="xINPUTx", value="", placeholder="")
+              .col-sm-6
+                .form-group
+                  label Random number
+                  input.form-control(name="xRANDx", value="", placeholder="")
+                .form-group
+                  label Loop start / end
+                  input.form-control(name="xLOOPx", value="", placeholder="")
+                .form-group
+                  label Break out of the loop
+                  input.form-control(name="xBREAKx", value="", placeholder="")
+              .clearfix
+            input.btn.btn-primary(type="submit", value="Create the Language")

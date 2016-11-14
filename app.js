@@ -19,6 +19,16 @@ app.use(compression());
 app.use(cookieParser());
 
 app.get('/', (req, res) => {
+  res.render('home');
+});
+
+app.get('/start', (req, res) => {
+  res.render('start', {
+    name: req.query.name
+  });
+});
+
+app.get('/api', (req, res) => {
   res.render('explainer');
 });
 
