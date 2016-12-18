@@ -26,10 +26,10 @@ html
               li
                 a(href="/api/#{lang.name}")
                   span.capital #{lang.name}
-                  if lang.author
-                    span &nbsp;by #{lang.author}
-                  if lang.humanlanguage
-                    span &nbsp;based on #{lang.humanlanguage}
+                if lang.author
+                  span &nbsp;by #{lang.author}
+                if lang.humanlanguage
+                  span &nbsp;based on #{lang.humanlanguage}
         .col-sm-4
           h3
             img(src="/images/makingmore.png")

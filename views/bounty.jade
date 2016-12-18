@@ -1,0 +1,35 @@
+doctype
+html
+  head
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    title Cyclops Lang Generator
+    link(rel="stylesheet", href="/styles/bootstrap.min.css")
+    link(rel="stylesheet", href="/styles/homepage.css")
+  body
+    .container
+      .row
+        .col-sm-12
+          .jumbotron
+            h2
+              span.aegean 𐙀&nbsp;&nbsp;
+              span Cyclops Language Generator
+            h3 Code computers in any human language 
+      if existing.length
+        .row
+          .col-sm-12
+            h3 Matching Languages
+            p These existing languages could be a match:
+            for lang in existing
+              li
+                a(href="/api/#{lang.name}")
+                  span.capital #{lang.name}
+                if lang.author
+                  span &nbsp;by #{lang.author}
+                if lang.humanlanguage
+                  span &nbsp;based on #{lang.humanlanguage}
+      .row
+        .col-sm-12
+          h3 Bounty System in Progress
+          p This is something which I want to set up the right way... for now please contact me for assistance:
+          p ndoiron@mapmeld.com | @mapmeld on Twitter or GitHub

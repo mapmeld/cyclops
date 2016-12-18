@@ -31,6 +31,20 @@ app.get('/', csrfProtection, (req, res) => {
   });
 });
 
+app.get('/bounty', csrfProtection, (req, res) => {
+  var languageName = req.query.language;
+  Language.find({ name: languageName }, (err, matches) => {
+    if (err) {
+      return res.json(err);
+    }
+    res.render('bounty', {
+      name: languageName,
+      existing: matches,
+      csrfToken: req.csrfToken()
+    });
+  });
+});
+
 app.get('/start', csrfProtection, (req, res) => {
   var languageName = req.query.name;
   Language.findOne({ name: languageName }, (err, match) => {
