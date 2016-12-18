@@ -4,12 +4,19 @@
   min-height: 300px;
 }
 
-.form-group {
+.slide .form-group {
   margin-bottom: 18px;
 }
 
 .mobile-swipe {
   display: none;
+}
+
+.slide img {
+  max-width: 40px;
+  max-height: 40px;
+  float: left;
+  margin-right: 20px;
 }
 
 @media (max-width: 800px) {

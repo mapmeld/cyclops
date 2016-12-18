@@ -29,7 +29,10 @@ html
             input(type="hidden", name="_csrf", value=csrfToken)
             .owl-carousel.owl-theme
               .slide
-                h3 Language details
+                h4
+                  img(src="/images/code.png")
+                  span Language details
+                br
                 .form-group
                   label Programming language name
                   input.form-control(name="language_name", value=name, placeholder="", required)
@@ -44,8 +47,11 @@ html
                     input(type="checkbox", name="rtl")
                     span &nbsp;&nbsp;&nbsp;&nbsp;Right-to-left script? (Arabic, Hebrew, Divehi)
               .slide
-                h4 Initial Commands
+                h4
+                  img(src="/images/print.png")
+                  span Initial Commands
                 p defining your language name and I/O
+                br
                 .col-sm-6
                   .form-group
                     label Help command
@@ -68,8 +74,11 @@ html
                     input.form-control(name="xBREAKx", value="", placeholder="", required)
                 .clearfix
               .slide
-                h4 Math
+                h4
+                  img(src="/images/calculator.png")
+                  span Math
                 p symbols for working on numerical values
+                br
                 .col-sm-6
                   .form-group
                     label Add (optional)
@@ -89,8 +98,11 @@ html
                     input.form-control(name="xSTOREx", value="", placeholder="")
                 .clearfix
               .slide
-                h4 Conditional
+                h4
+                  img(src="/images/conditional.png")
+                  span Conditional
                 p change action of the program based on certain conditions
+                br
                 .col-sm-6
                   .form-group
                     label Switch (conditional statement)
@@ -110,8 +122,11 @@ html
                     input.form-control(name="xLESSERx", value="", placeholder="less than", required)
                 .clearfix
               .slide
-                h4 Functions and parameters
+                h4
+                  img(src="/images/function.png")
+                  span Functions and parameters
                 p put reusable code in functions (e.g. square root function)
+                br
                 .col-sm-6
                   .form-group
                     label Function start
@@ -143,6 +158,9 @@ html
               input.btn.btn-primary(type="submit", value="Create the Language")
         .col-sm-1
           button.next &rarr;
+      .row
+        .col-sm-12
+          small Icons CC-BY Creative Stall, Magicon, and Oliviu Stoian via Noun Project
     br
     br
     script(src="/scripts/jquery-1.11.3.min.js")
