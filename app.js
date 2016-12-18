@@ -31,13 +31,13 @@ app.get('/', csrfProtection, (req, res) => {
   });
 });
 
-app.get('/bounty', csrfProtection, (req, res) => {
+app.get('/reward', csrfProtection, (req, res) => {
   var languageName = req.query.language;
   Language.find({ name: languageName }, (err, matches) => {
     if (err) {
       return res.json(err);
     }
-    res.render('bounty', {
+    res.render('reward', {
       name: languageName,
       existing: matches,
       csrfToken: req.csrfToken()
