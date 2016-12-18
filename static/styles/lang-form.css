@@ -8,10 +8,6 @@
   margin-bottom: 18px;
 }
 
-.mobile-swipe {
-  display: none;
-}
-
 .slide img {
   max-width: 40px;
   max-height: 40px;
@@ -24,8 +20,8 @@
     display: none;
   }
   
-  .mobile-swipe {
-    display: block;
+  .owl-carousel {
+    display: block !important;
   }
   
   .owl-carousel.owl-theme.owl-loaded {
@@ -35,5 +31,6 @@
   .slide {
     padding-left: 10px;
     padding-right: 10px;
+    margin-bottom: 40px;
   }
 }

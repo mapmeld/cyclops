@@ -23,8 +23,6 @@ html
         .col-sm-1
           button.prev &larr;
         .col-sm-10
-          .mobile-swipe
-            small Complete the form, and swipe right to see more options.
           form.form(action="/make", method="POST")
             input(type="hidden", name="_csrf", value=csrfToken)
             .owl-carousel.owl-theme
