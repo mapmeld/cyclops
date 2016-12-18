@@ -17,7 +17,9 @@ html
             h3 Code computers in any human language 
       .row
         .col-sm-4
-          h3 Languages
+          h3
+            img(src="/images/languages.png")
+            span Languages
           p List of recently produced languages:
           ul
             for lang in recentLanguages
@@ -29,15 +31,26 @@ html
                   if lang.humanlanguage
                     span &nbsp;based on #{lang.humanlanguage}
         .col-sm-4
-          h3 Making More
-          p We want to cover many more languages!
-          p You can make a programming language in your native language, or (coming soon) set up a bounty for a new language.
+          h3
+            img(src="/images/makingmore.png")
+            span Coding More
+          p
+            span We want to cover many more languages!
+            br
+            span You can make a programming language in your native language, or set a bounty for a new language.
+          form.form(action="/bounty", method="GET")
+            .form-group
+              input.form-control(name="language", value="", placeholder="Language name", required)
+              input.btn.btn-primary(type="submit", value="Request")
+          
         .col-sm-4
-          h3 Make Your Own
-          p There are only 23 keywords needed to make a new language:
+          h3
+            img(src="/images/diy.png")
+            span Make Your Own
+          p It takes only 23 keywords to make a new language, including: addition and subtraction signs, the print command, and a repeat:
           form.form(action="/start", method="GET")
             .form-group
               input.form-control(name="name", value="", placeholder="Language name", required)
-              input.btn.btn-success.pull-right(type="submit", value="Get Started")
+              input.btn.btn-success(type="submit", value="Get Started")
       hr
     
