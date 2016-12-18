@@ -6,7 +6,7 @@ html
     title Cyclops Lang Generator
     link(rel="stylesheet", href="/styles/owl.carousel.min.css")
     link(rel="stylesheet", href="/styles/bootstrap.min.css")
-    style .prev, .next { background: #000; color: #fff; min-height: 300px; } .form-group { margin-bottom: 18px; }
+    link(rel="stylesheet", href="/styles/lang-form.css")
   body
     .container
       .row
@@ -23,6 +23,8 @@ html
         .col-sm-1
           button.prev &larr;
         .col-sm-10
+          .mobile-swipe
+            small Complete the form, and swipe right to see more options.
           form.form(action="/make", method="POST")
             input(type="hidden", name="_csrf", value=csrfToken)
             .owl-carousel.owl-theme
