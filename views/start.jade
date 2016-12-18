@@ -4,7 +4,9 @@ html
     meta(charset="utf-8")
     meta(name="viewport", content="width=device-width, initial-scale=1")
     title Cyclops Lang Generator
+    link(rel="stylesheet", href="/styles/owl.carousel.min.css")
     link(rel="stylesheet", href="/styles/bootstrap.min.css")
+    style .prev, .next { background: #000; color: #fff; min-height: 300px; } .form-group { margin-bottom: 18px; }
   body
     .container
       .row
@@ -18,121 +20,129 @@ html
             span Creating language:&nbsp;
             big #{name}
       .row
-        .col-sm-12
+        .col-sm-1
+          button.prev &larr;
+        .col-sm-10
           form.form(action="/make", method="POST")
             input(type="hidden", name="_csrf", value=csrfToken)
-            .well
-              h3 Language details
-              .form-group
-                label Programming language name
-                input.form-control(name="language_name", value=name, placeholder="", required)
-              .form-group
-                label Author's name
-                input.form-control(name="author", placeholder="Your name or pen name", required)
-              .form-group
-                label Language is based on this human language:
-                input.form-control(name="human_language", placeholder="")
-              .form-group
-                label
-                  input(type="checkbox", name="rtl")
-                  span &nbsp;&nbsp;&nbsp;&nbsp;Right-to-left script? (Arabic, Hebrew, Divehi)
-            .well
-              h4 Initial Commands
-              p defining your language name and I/O
-              .col-sm-6
+            .owl-carousel.owl-theme
+              .slide
+                h3 Language details
                 .form-group
-                  label Help command
-                  input.form-control(name="xHELPx", value=name, placeholder="", required)
+                  label Programming language name
+                  input.form-control(name="language_name", value=name, placeholder="", required)
                 .form-group
-                  label Print / output
-                  input.form-control(name="xPRINTx", value="", placeholder="", required)
+                  label Author's name
+                  input.form-control(name="author", placeholder="Your name or pen name", required)
                 .form-group
-                  label Get user input (optional)
-                  input.form-control(name="xINPUTx", value="", placeholder="")
-              .col-sm-6
+                  label Language is based on this human language:
+                  input.form-control(name="human_language", placeholder="")
                 .form-group
-                  label Random number
-                  input.form-control(name="xRANDx", value="", placeholder="")
-                .form-group
-                  label Loop start / end
-                  input.form-control(name="xLOOPx", value="", placeholder="", required)
-                .form-group
-                  label Break out of the loop
-                  input.form-control(name="xBREAKx", value="", placeholder="", required)
-              .clearfix
-            .well
-              h4 Math
-              p symbols for working on numerical values
-              .col-sm-6
-                .form-group
-                  label Add (optional)
-                  input.form-control(name="xADDx", value="", placeholder="")
-                .form-group
-                  label Subtract
-                  input.form-control(name="xSUBTRACTx", value="", placeholder="", required)
-              .col-sm-6
-                .form-group
-                  label Divide
-                  input.form-control(name="xDIVIDEx", value="", placeholder="", required)
-                .form-group
-                  label Multiply
-                  input.form-control(name="xMULTIPLYx", value="", placeholder="", required)
-                .form-group
-                  label Variable store (optional)
-                  input.form-control(name="xSTOREx", value="", placeholder="")
-              .clearfix
-            .well
-              h4 Conditional
-              p change action of the program based on certain conditions
-              .col-sm-6
-                .form-group
-                  label Switch (conditional statement)
-                  input.form-control(name="xSWITCHx", value="", placeholder="", required)
-                .form-group
-                  label End switch / conditional statement
-                  input.form-control(name="xSWITCHEDx", value="", placeholder="", required)
-              .col-sm-6
-                .form-group
-                  label Compare two figures (A is equal to B)
-                  input.form-control(name="xDUBEQUALx", value="", placeholder="equal to", required)
-                .form-group
-                  label Compare two figures (A is greater than B)
-                  input.form-control(name="xGREATERx", value="", placeholder="greater than", required)
-                .form-group
-                  label Compare two figures (A is less than B)
-                  input.form-control(name="xLESSERx", value="", placeholder="less than", required)
-              .clearfix
-            .well
-              h4 Functions and parameters
-              p put reusable code in functions (e.g. square root function)
-              .col-sm-6
-                .form-group
-                  label Function start
-                  input.form-control(name="xFUNCSTARTx", value="", placeholder="", required)
-                .form-group
-                  label Function end
-                  input.form-control(name="xFUNCENDx", value="", placeholder="", required)
-              .col-sm-6
-                .form-group
-                  h4 Function parameters
-                .form-group
-                  label Parameter one
-                  input.form-control(name="xPARAMONEx", value="", placeholder="", required)
-                .form-group
-                  label Parameter two
-                  input.form-control(name="xPARAMTWOx", value="", placeholder="")
-                .form-group
-                  label Parameter three
-                  input.form-control(name="xPARAMTHREEx", value="", placeholder="")
-                .form-group
-                  label Parameter four
-                  input.form-control(name="xPARAMFOURx", value="", placeholder="")
-                .form-group
-                  label Parameter five
-                  input.form-control(name="xPARAMFIVEx", value="", placeholder="")
-              .clearfix
+                  label
+                    input(type="checkbox", name="rtl")
+                    span &nbsp;&nbsp;&nbsp;&nbsp;Right-to-left script? (Arabic, Hebrew, Divehi)
+              .slide
+                h4 Initial Commands
+                p defining your language name and I/O
+                .col-sm-6
+                  .form-group
+                    label Help command
+                    input.form-control(name="xHELPx", value=name, placeholder="", required)
+                  .form-group
+                    label Print / output
+                    input.form-control(name="xPRINTx", value="", placeholder="", required)
+                  .form-group
+                    label Get user input (optional)
+                    input.form-control(name="xINPUTx", value="", placeholder="")
+                .col-sm-6
+                  .form-group
+                    label Random number
+                    input.form-control(name="xRANDx", value="", placeholder="")
+                  .form-group
+                    label Loop start / end
+                    input.form-control(name="xLOOPx", value="", placeholder="", required)
+                  .form-group
+                    label Break out of the loop
+                    input.form-control(name="xBREAKx", value="", placeholder="", required)
+                .clearfix
+              .slide
+                h4 Math
+                p symbols for working on numerical values
+                .col-sm-6
+                  .form-group
+                    label Add (optional)
+                    input.form-control(name="xADDx", value="", placeholder="")
+                  .form-group
+                    label Subtract
+                    input.form-control(name="xSUBTRACTx", value="", placeholder="", required)
+                .col-sm-6
+                  .form-group
+                    label Divide
+                    input.form-control(name="xDIVIDEx", value="", placeholder="", required)
+                  .form-group
+                    label Multiply
+                    input.form-control(name="xMULTIPLYx", value="", placeholder="", required)
+                  .form-group
+                    label Variable store (optional)
+                    input.form-control(name="xSTOREx", value="", placeholder="")
+                .clearfix
+              .slide
+                h4 Conditional
+                p change action of the program based on certain conditions
+                .col-sm-6
+                  .form-group
+                    label Switch (conditional statement)
+                    input.form-control(name="xSWITCHx", value="", placeholder="", required)
+                  .form-group
+                    label End switch / conditional statement
+                    input.form-control(name="xSWITCHEDx", value="", placeholder="", required)
+                .col-sm-6
+                  .form-group
+                    label Compare two figures (A is equal to B)
+                    input.form-control(name="xDUBEQUALx", value="", placeholder="equal to", required)
+                  .form-group
+                    label Compare two figures (A is greater than B)
+                    input.form-control(name="xGREATERx", value="", placeholder="greater than", required)
+                  .form-group
+                    label Compare two figures (A is less than B)
+                    input.form-control(name="xLESSERx", value="", placeholder="less than", required)
+                .clearfix
+              .slide
+                h4 Functions and parameters
+                p put reusable code in functions (e.g. square root function)
+                .col-sm-6
+                  .form-group
+                    label Function start
+                    input.form-control(name="xFUNCSTARTx", value="", placeholder="", required)
+                  .form-group
+                    label Function end
+                    input.form-control(name="xFUNCENDx", value="", placeholder="", required)
+                .col-sm-6
+                  .form-group
+                    h4 Function parameters
+                  .form-group
+                    label Parameter one
+                    input.form-control(name="xPARAMONEx", value="", placeholder="", required)
+                  .form-group
+                    label Parameter two
+                    input.form-control(name="xPARAMTWOx", value="", placeholder="")
+                  .form-group
+                    label Parameter three
+                    input.form-control(name="xPARAMTHREEx", value="", placeholder="")
+                  .form-group
+                    label Parameter four
+                    input.form-control(name="xPARAMFOURx", value="", placeholder="")
+                  .form-group
+                    label Parameter five
+                    input.form-control(name="xPARAMFIVEx", value="", placeholder="")
+                .clearfix
             br
             .well
               input.btn.btn-primary(type="submit", value="Create the Language")
-            br
-            br
+        .col-sm-1
+          button.next &rarr;
+    br
+    br
+    script(src="/scripts/jquery-1.11.3.min.js")
+    script(src="/scripts/owl.carousel.min.js")
+    script(src="/scripts/lang-editor.js")

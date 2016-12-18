@@ -11,6 +11,10 @@
   line-height: 180%;
 }
 
+.col-sm-4 {
+  margin-bottom: 20px;
+}
+
 .jumbotron {
   text-align: center;
   background-color: skyblue;
