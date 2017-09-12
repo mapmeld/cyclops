@@ -1,5 +1,7 @@
 # Cyclops Language Generator
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/mapmeld/cyclops.svg)](https://greenkeeper.io/)
+
 ## Create new Programming Languages
 
 I am relaunching Cyclops as a programming language for any human language or writing system,
