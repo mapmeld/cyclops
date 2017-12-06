@@ -15,7 +15,7 @@ const csrfProtection = csrf({ cookie: true });
 var app = express();
 
 app.set('views', __dirname + '/views');
-app.set('view engine', 'jade');
+app.set('view engine', 'pug');
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express['static'](__dirname + '/static'));
